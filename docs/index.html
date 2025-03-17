@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SemTab 2025</title>
+  <link href="./css/style.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <nav class="bg-grid bg-bottom z-20 sticky top-0 transition-all duration-300" id="nav-bar">
+    <div class="container flex flex-wrap items-center justify-between py-1 relative">
+      <a href="./"
+        class="items-center space-x-3 rtl:space-x-reverse pointer-events-none opacity-0 transition-opacity duration-300"
+        id="nav-brand">
+        <span class="self-center text-2xl font-bold whitespace-nowrap bg-title animation-delay-200">SemTab 2025</span>
+      </a>
+
+      <button data-collapse-toggle="navbar-default" type="button" id="navbar-toggle"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="py-6 bg-grid bg-top">
+    <div class="container flex md:flex-row flex-col items-center">
+      <div
+        class="lg:flex-grow md:w-3/4 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center md:min-w-prose">
+        <h1 class="sm:text-6xl text-3xl mb-4 font-bold bg-title animation-delay-700">
+          SemTab 2025</h1>
+        <p class="mb-8 leading-relaxed">Semantic Web Challenge on Tabular Data to Knowledge Graph Matching</p>
+        <div class="flex flex-col md:flex-row gap-2 justify-center">
+          <a href="#tracks"
+            class="inline-flex justify-center text-primary-foreground bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-primary/80 rounded-md text-lg">Tracks</a>
+          <a href="https://groups.google.com/g/sem-tab-challenge"
+            class="inline-flex justify-center text-center text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-md text-lg">Join
+            the forum</a>
+        </div>
+      </div>
+      <div class="lg:max-w-1/3 md:w-1/4 w-1/2 relative isolate md:ml-auto">
+        <img class="object-cover object-center rounded rotate-6" alt="hero" src="./imgs/prize-success.png">
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- About the Challenge -->
+    <section class="py-6 container">
+      <h2 id="about" class="text-2xl font-bold bg-title animation-delay-1000 scroll-m-20 mb-3">About the Challenge</h2>
+      <p>Tabular data in the form of CSV files is the common input format in a data analytics pipeline. However, a
+        lack of understanding of the semantic structure and meaning of the content may hinder the data analytics
+        process.
+        Thus gaining this semantic understanding will be very valuable for data integration, data cleaning, data
+        mining, machine learning and knowledge discovery tasks. For example, understanding what the data is can help
+        assess
+        what sorts of transformation are appropriate on the data.
+      </p>
+      <p>
+        Tables on the Web may also be the source of highly valuable data. The addition of semantic information to Web
+        tables may enhance a wide range of applications, such as web search, question answering, and Knowledge Base
+        (KB) construction.
+      </p>
+      <p>
+        Tabular data to Knowledge Graph (KG) matching is the process of assigning semantic tags from KGs
+        (e.g., Wikidata or DBpedia) to the elements of the table. This task however is often difficult in practice due
+        to metadata (e.g., table and column names) being missing, incomplete or ambiguous.
+      </p>
+      <p>
+        The <a href="http://www.cs.ox.ac.uk/isg/challenges/sem-tab/" target="_blank">SemTab challenge</a> aims at
+        benchmarking systems dealing with the tabular data to KG matching problem, so as to facilitate their
+        comparison on the same basis and the reproducibility of the results.
+      </p>
+      <p>
+        The 2025 edition of this challenge will be collocated with the <a
+          href="https://iswc2025.semanticweb.org/"
+          target="_blank">24st International Semantic Web Conference</a>.
+      </p>
+    </section>
+
+    <!-- Tracks -->
+    <section class="py-6 container">
+      <h2 class="text-2xl font-bold mb-3 bg-title animation-delay-75 scroll-m-20" id="tracks">Challenge Tracks</h2>
+
+      <!-- Accuracy -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1">
+          <div class="flex-shrink-0 h-4 w-2 bg-move rounded-sm"></div>
+          <h3 class="text-xl font-bold">Coming soon</h3>
+        </div>
+
+      </div>
+     
+    </section>
+
+    <!-- Co-Chairs -->
+    <section class="py-6 bg-grid bg-left-bottom container">
+      <h2 class="text-2xl font-bold bg-title animation-delay-75 mb-3">Co-Chairs</h2>
+      <ul class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-2">
+        <li class="border rounded-md bg-card hover:bg-card-hover">
+          <a href="mailto:marco.cremaschi@unimib.it" class="p-4 flex flex-col">
+            <strong>Marco Cremaschi</strong>
+            <span class="text-slate-500">University of Milan - Bicocca</span>
+            <span class="text-sm flex items-center gap-1 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              marco.cremaschi[at]unimib.it
+            </span>
+          </a>
+        </li>
+        <li class="border rounded-md bg-card hover:bg-card-hover">
+          <a href="mailto:fabio.dadda@unimib.it" class="p-4 flex flex-col">
+            <strong>Fabio D'Adda</strong>
+            <span class="text-slate-500">University of Milan - Bicocca</span>
+            <span class="text-sm flex items-center gap-1 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              fabio.dadda[at]unimib.it
+            </span>
+          </a>
+        </li>
+        <li class="border rounded-md bg-card hover:bg-card-hover">
+          <a href="mailto:fidel.jiomekong@facsciences-uy1.cm" class="p-4 flex flex-col">
+            <strong>Fidel Jiomekong Azanzi</strong>
+            <span class="text-slate-500">University of Yaounde, Cameroon</span>
+            <span class="text-sm flex items-center gap-1 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              fidel.jiomekong[at]facsciences-uy1.cm
+            </span>
+          </a>
+        </li>
+        <li class="border rounded-md bg-card hover:bg-card-hover">
+          <a href="mailto:ernesto.jimenez-ruiz@city.ac.uk" class="p-4 flex flex-col">
+            <strong>Ernesto Jimenez-Ruiz</strong>
+            <span class="text-slate-500">City, University of London, University of Oslo</span>
+            <span class="text-sm flex items-center gap-1 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              ernesto.jimenez-ruiz@city.ac.uk
+            </span>
+          </a>
+        </li>
+        <li class="border rounded-md bg-card hover:bg-card-hover">
+          <a href="mailto:hassanzadeh@us.ibm.com" class="p-4 flex flex-col">
+            <strong>Oktie Hassanzadeh</strong>
+            <span class="text-slate-500">IBM Research</span>
+            <span class="text-sm flex items-center gap-1 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-mail">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              hassanzadeh@us.ibm.com
+            </span>
+          </a>
+        </li>
+      </ul>
+      </p>
+    </section>
+
+    <!-- Acknowledgements -->
+    <section class="py-6 container">
+      <h2 class="text-2xl font-bold bg-title animation-delay-500 mb-3">Acknowledgements</h2>
+      <p>
+        The challenge is currently supported by the <a href="http://www.research.ibm.com/">IBM Research</a> and the <a href="https://iswc2025.semanticweb.org/"> ISWC 2025</a>.
+      </p>
+      <div class="grid grid-cols-3 place-content-center place-items-center max-w-2xl">
+        <a href="" class="bg-card hover:bg-card-hover border w-full h-full flex justify-center items-center">
+          <img src="./imgs/IBM logo small.svg" alt="IBM Research" class="w-full p-4 max-w-56">
+        </a>
+        <a href="" class="bg-card hover:bg-card-hover border border-l-0 w-full h-full flex justify-center items-center">
+          <img src="./imgs/iswc.png" alt="ISWC 2023" class="w-full p-4 max-w-56">
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/main.min.js" defer></script>
+</body>
+
+</html>
