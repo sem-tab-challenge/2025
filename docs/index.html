@@ -1,206 +1,1318 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SemTab 2025</title>
-  <link href="./css/style.min.css" rel="stylesheet" type="text/css">
+  <title>SemTab 2025 - Semantic Web Challenge</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'var(--color-primary)',
+            secondary: 'var(--color-secondary)',
+            accent: 'var(--color-accent)',
+            dark: {
+              bg: 'var(--color-dark-bg)',
+              card: 'var(--color-dark-card)',
+              text: 'var(--color-dark-text)',
+              border: 'var(--color-dark-border)',
+              nav: 'var(--color-dark-nav)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Dynamic Color Palette System - All colors derived from primary */
+    :root {
+      /* PRIMARY COLOR - THE ONLY DIRECTLY SET COLOR */
+      --primary-hue: 217; /* Blue */
+      --primary-saturation: 91%;
+      --primary-lightness: 60%;
+      
+      /* Primary color and variations - derived using HSL adjustments */
+      --color-primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
+      --color-primary-light: hsl(var(--primary-hue), calc(var(--primary-saturation) - 10%), calc(var(--primary-lightness) + 10%));
+      --color-primary-dark: hsl(var(--primary-hue), calc(var(--primary-saturation) + 5%), calc(var(--primary-lightness) - 10%));
+      --color-primary-darker: hsl(var(--primary-hue), calc(var(--primary-saturation) + 10%), calc(var(--primary-lightness) - 20%));
+      
+      /* Secondary colors - derived by shifting the hue */
+      --secondary-hue: calc(var(--primary-hue) + 30); /* Analogous color (shift by 30 degrees) */
+      --color-secondary: hsl(var(--secondary-hue), var(--primary-saturation), var(--primary-lightness));
+      --color-secondary-light: hsl(var(--secondary-hue), calc(var(--primary-saturation) - 10%), calc(var(--primary-lightness) + 10%));
+      --color-secondary-dark: hsl(var(--secondary-hue), calc(var(--primary-saturation) + 5%), calc(var(--primary-lightness) - 10%));
+      
+      /* Accent colors - derived using complementary color (opposite on color wheel) */
+      --accent-hue: calc(var(--primary-hue) + 180);
+      --color-accent: hsl(var(--accent-hue), var(--primary-saturation), var(--primary-lightness));
+      --color-accent-light: hsl(var(--accent-hue), calc(var(--primary-saturation) - 10%), calc(var(--primary-lightness) + 10%));
+      --color-accent-dark: hsl(var(--accent-hue), calc(var(--primary-saturation) + 5%), calc(var(--primary-lightness) - 10%));
+      
+      /* Neutral colors - derived by desaturating the primary color */
+      --color-neutral-50: hsl(var(--primary-hue), 10%, 98%);
+      --color-neutral-100: hsl(var(--primary-hue), 10%, 95%);
+      --color-neutral-200: hsl(var(--primary-hue), 10%, 90%);
+      --color-neutral-300: hsl(var(--primary-hue), 10%, 80%);
+      --color-neutral-400: hsl(var(--primary-hue), 10%, 70%);
+      --color-neutral-500: hsl(var(--primary-hue), 10%, 55%);
+      --color-neutral-600: hsl(var(--primary-hue), 10%, 40%);
+      --color-neutral-700: hsl(var(--primary-hue), 15%, 30%);
+      --color-neutral-800: hsl(var(--primary-hue), 20%, 20%);
+      --color-neutral-900: hsl(var(--primary-hue), 25%, 15%);
+      --color-neutral-950: hsl(var(--primary-hue), 30%, 5%);
+      
+      /* Gray colors - derived by further desaturating and darkening */
+      --color-gray-700: hsl(var(--primary-hue), 15%, 25%);
+      --color-gray-800: hsl(var(--primary-hue), 20%, 15%);
+      --color-gray-900: hsl(var(--primary-hue), 25%, 10%);
+      --color-gray-950: hsl(var(--primary-hue), 30%, 5%);
+      
+      /* Dark Theme Colors - derived from the same primary color */
+      --color-dark-bg: var(--color-gray-900);
+      --color-dark-card: hsla(var(--primary-hue), 20%, 15%, 0.85);
+      --color-dark-text: var(--color-neutral-50);
+      --color-dark-border: hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.2);
+      --color-dark-nav: hsla(var(--primary-hue), 25%, 10%, 0.95);
+      
+      /* Semantic Colors - derived from primary with hue shifts */
+      --color-success: hsl(calc(var(--primary-hue) + 100), var(--primary-saturation), 45%);
+      --color-warning: hsl(calc(var(--primary-hue) + 150), var(--primary-saturation), 50%);
+      --color-error: hsl(calc(var(--primary-hue) + 180), var(--primary-saturation), 60%);
+      --color-info: var(--color-primary);
+    }
+    
+    /* Custom CSS for animations and effects */
+    .animate-gradient {
+      background-size: 200% auto;
+      background-image: linear-gradient(to right, var(--color-primary-dark), var(--color-primary), var(--color-primary-dark));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradient 8s linear infinite;
+    }
+    
+    /* Oblique Blue to Orange gradient animation for SemTab text */
+    .semtab-gradient {
+      background-size: 400% 400%;
+      background-image: linear-gradient(
+        135deg, 
+        hsl(217, 91%, 60%) 0%, /* Blue */
+        hsl(217, 91%, 65%) 10%,
+        hsl(230, 91%, 65%) 20%,
+        hsl(250, 91%, 65%) 30%,
+        hsl(270, 91%, 65%) 40%,
+        hsl(290, 91%, 65%) 50%,
+        hsl(310, 91%, 65%) 60%,
+        hsl(330, 91%, 65%) 70%,
+        hsl(350, 91%, 65%) 80%,
+        hsl(30, 91%, 60%) 90%, /* Orange */
+        hsl(217, 91%, 60%) 100% /* Back to blue */
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: obliqueBluOrangeGradient 15s ease infinite;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+      will-change: background-position;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes obliqueBluOrangeGradient {
+      0% {
+        background-position: 0% 0%;
+      }
+      25% {
+        background-position: 100% 100%;
+      }
+      50% {
+        background-position: 100% 0%;
+      }
+      75% {
+        background-position: 0% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+    
+    /* Dark mode styles (only mode available) */
+    body {
+      background-color: var(--color-dark-bg);
+      color: var(--color-dark-text);
+      position: relative;
+    }
+    
+    /* Full page background canvas */
+    #graph-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    
+    /* Content container to appear above the canvas */
+    .content-container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* New modern glassmorphism card style with reduced border radius */
+    .glass {
+      background: var(--color-dark-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--color-dark-border);
+      box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.5);
+      border-radius: 0.5rem;
+    }
+
+    /* Modern glassmorphic button style */
+    .glass-button {
+      background: hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.3);
+      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      border-radius: 0.5rem;
+    }
+    
+    .glass-button:hover {
+      background: hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.3);
+      border: 1px solid hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.5);
+      box-shadow: 0 6px 25px 0 hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.2);
+    }
+
+    /* Modern co-chair card style with reduced border radius */
+    .chair-card {
+      background: var(--color-dark-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--color-dark-border);
+      box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.5);
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+    
+    .chair-card:hover {
+      box-shadow: 0 15px 40px 0 hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .chair-card-header {
+      border-bottom: 1px solid var(--color-dark-border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Sticky navigation styles with glassmorphism */
+    .navbar {
+      background-color: var(--color-dark-nav);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-dark-border);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      z-index: 50;
+    }
+
+    /* Footer style with no rounded corners */
+    .footer {
+      background: hsla(var(--primary-hue), 20%, 15%, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--color-dark-border);
+      box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+      border-radius: 0;
+    }
+
+    /* Active navigation link */
+    .nav-link.active {
+      color: var(--color-primary);
+      border-bottom: 2px solid var(--color-primary);
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Blue circle background elements */
+    #background-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Consistent link styling */
+    .link {
+      color: var(--color-primary);
+      transition: all 0.2s ease;
+    }
+    
+    .link:hover {
+      color: var(--color-primary-light);
+    }
+
+    /* Consistent indicator dot */
+    .indicator-dot {
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+      background: linear-gradient(to right, var(--color-primary-dark), var(--color-primary));
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    /* Logo styling */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      padding: 1rem;
+    }
+    
+    .logo-container:hover {
+      transform: translateY(-5px);
+    }
+    
+    .logo-container img {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    /* Key phrase highlighting */
+    .key-phrase {
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-color: hsla(30, 91%, 60%, 0.5);
+      text-decoration-thickness: 2px;
+    }
+
+    /* Scroll down arrow styling */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-arrow:hover {
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    .scroll-arrow:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+
+    .scroll-arrow svg {
+      filter: drop-shadow(0 0 8px hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.5));
+    }
+
+    .scroll-arrow-circle {
+      fill: hsla(var(--primary-hue), 20%, 15%, 0.7);
+      stroke: hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.6);
+      stroke-width: 2;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-arrow:hover .scroll-arrow-circle {
+      fill: hsla(var(--primary-hue), 20%, 15%, 0.9);
+      stroke: hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.8);
+    }
+
+    .scroll-arrow-path {
+      fill: hsla(var(--primary-hue), 20%, 15%, 1);
+      stroke: var(--color-primary-dark);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: all 0.3s ease;
+    }
+
+    .scroll-arrow:hover .scroll-arrow-path {
+      stroke: var(--color-primary);
+    }
+
+    /* Challenge badge styling */
+    .challenge-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+      transition: all 0.2s ease;
+      border-width: 1px;
+      border-style: solid;
+    }
+
+    .challenge-badge:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .challenge-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .challenge-description {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: var(--color-neutral-300);
+    }
+
+    /* Tooltip styling */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      width: 160px;
+      background-color: var(--color-dark-card);
+      color: var(--color-dark-text);
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -80px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border: 1px solid var(--color-dark-border);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .tooltip .tooltip-text::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--color-dark-card) transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltip-text {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    /* Disabled button styling */
+    .disabled-button {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .disabled-button:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Enable tooltip on disabled button */
+    .tooltip-enabled {
+      pointer-events: auto;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+    
+    /* Color Theme Switcher */
+    .theme-switcher {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--color-dark-card);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid var(--color-dark-border);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s ease;
+    }
+    
+    .color-option:hover, .color-option.active {
+      transform: scale(1.1);
+      border-color: white;
+    }
+
+/* Important Dates Tab and Modal Styles */
+#dates-tab {
+  animation: pulse 2s infinite;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+#dates-tab svg {
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 5px hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.5));
+}
+
+#dates-modal .indicator-dot {
+  flex-shrink: 0;
+}
+
+.modal-open {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+}
+
+.modal-open .modal-backdrop {
+  opacity: 1 !important;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0);
+  }
+}
+  </style>
 </head>
-
 <body>
-  <nav class="bg-grid bg-bottom z-20 sticky top-0 transition-all duration-300" id="nav-bar">
-    <div class="container flex flex-wrap items-center justify-between py-1 relative">
-      <a href="./"
-        class="items-center space-x-3 rtl:space-x-reverse pointer-events-none opacity-0 transition-opacity duration-300"
-        id="nav-brand">
-        <span class="self-center text-2xl font-bold whitespace-nowrap bg-title animation-delay-200">SemTab 2025</span>
-      </a>
+  <!-- Background canvas for animated blue circles -->
+  <canvas id="background-canvas"></canvas>
+  
+  <!-- Full page background canvas for the moving graph -->
+  <canvas id="graph-canvas"></canvas>
+  
+  <div class="content-container">
+    <!-- Navigation Menu with Glassmorphism -->
+    <header class="navbar fixed top-0 left-0 right-0 transition-all duration-300">
+      <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+        <!-- Empty space where logo was -->
+        <div class="w-8"></div>
 
-      <button data-collapse-toggle="navbar-default" type="button" id="navbar-toggle"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-        aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-toggle" class="md:hidden p-2 rounded-lg focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Navigation Links - Solid colors -->
+        <nav id="nav-links" class="hidden md:flex flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 md:space-x-6">
+          <a href="#hero" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Home</a>
+          <a href="#about" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">About</a>
+          <a href="#tracks" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Tracks</a>
+          <a href="#co-chairs" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Co-Chairs</a>
+          <a href="#acknowledgements" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Acknowledgements</a>
+        </nav>
+
+        <!-- Empty space where theme toggle was -->
+        <div class="w-8"></div>
+      </div>
+    </header>
+    
+    <main>
+      <!-- Hero Section -->
+      <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+        <div class="text-center px-4 max-w-4xl">
+          <h1 class="text-6xl md:text-7xl font-bold mb-4 flex justify-center items-baseline">
+            <span class="semtab-gradient">SemTab</span>
+            <span class="animate-gradient ml-2">2025</span>
+          </h1>
+          <p class="text-xl md:text-2xl mb-8">
+            Semantic Web Challenge on Tabular Data to Knowledge Graph Matching
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#tracks" class="px-6 py-3 glass-button text-white font-medium transition-all">
+              Tracks
+            </a>
+            <a href="#" class="px-6 py-3 glass font-medium hover:bg-opacity-80 transition-colors">
+              Join the forum
+            </a>
+          </div>
+        </div>
+        
+        <!-- Scroll Down Arrow - Fixed to use button instead of anchor for better control -->
+        <button id="scroll-arrow" class="scroll-arrow" aria-label="Scroll to About section">
+          <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <circle class="scroll-arrow-circle" cx="25" cy="25" r="23" />
+            <path class="scroll-arrow-path" d="M15 22L25 32L35 22" />
+          </svg>
+        </button>
+      </div>
+      
+      <div class="container mx-auto px-4 py-8 space-y-16">
+        <!-- About Section -->
+        <section id="about" class="scroll-mt-24">
+          <h2 class="text-3xl font-bold mb-6 animate-gradient">
+            About the Challenge
+          </h2>
+          
+          <div class="glass p-8 space-y-4">
+            <p>
+              Tabular data in the form of <span class="key-phrase">CSV files</span> is the common input format in a data analytics pipeline. However, a lack of understanding of the <span class="key-phrase">semantic structure</span> and meaning of the content may hinder the data analytics process. Thus gaining this semantic understanding will be very valuable for <span class="key-phrase">data integration</span>, <span class="key-phrase">data cleaning</span>, <span class="key-phrase">data mining</span>, <span class="key-phrase">machine learning</span> and <span class="key-phrase">knowledge discovery</span> tasks.
+            </p>
+            
+            <p>
+              Tables on the Web may also be the source of highly valuable data. The addition of <span class="key-phrase">semantic information</span> to Web tables may enhance a wide range of applications, such as <span class="key-phrase">web search</span>, <span class="key-phrase">question answering</span>, and <span class="key-phrase">Knowledge Base (KB)</span> construction.
+            </p>
+            
+            <p>
+              <span class="key-phrase">Tabular data to Knowledge Graph (KG) matching</span> is the process of assigning semantic tags from KGs (e.g., <span class="key-phrase">Wikidata</span> or <span class="key-phrase">DBpedia</span>) to the elements of the table. This task however is often difficult in practice due to metadata (e.g., table and column names) being missing, incomplete or ambiguous.
+            </p>
+            
+            <p>
+              The <span class="key-phrase">SemTab challenge</span> aims at benchmarking systems dealing with the tabular data to KG matching problem, so as to facilitate their comparison on the same basis and the <span class="key-phrase">reproducibility</span> of the results.
+            </p>
+            
+            <p>
+              The 2025 edition of this challenge will be collocated with the <a class="link" href="https://iswc2025.semanticweb.org">International Semantic Web Conference</a>.
+            </p>
+          </div>
+        </section>
+        
+        <!-- Tracks Section -->
+        <section id="tracks" class="scroll-mt-24">
+          <h2 class="text-3xl font-bold mb-6 animate-gradient">
+            Challenge Tracks
+          </h2>
+          
+          <div class="glass p-8 space-y-6">
+            <!-- MammoTab Title -->
+            <div class="mb-6">
+              <h3 class="text-4xl md:text-5xl font-bold semtab-gradient inline-block">MammoTab</h3>
+            </div>
+            
+            <p class="mb-4">
+              In SemTab 2025, participants will address the Semantic Table Interpretation challenge using a carefully selected subset of <span class="key-phrase">844 tables</span> from the new version of the <span class="key-phrase">MammoTab dataset</span>, comprising a total of <span class="key-phrase">84,185 cell</span> annotations. MammoTab is a large-scale benchmark designed to provide realistic and complex scenarios, including tables affected by typical challenges of web and Wikipedia data.
+            </p>
+            
+            <p class="mb-4">
+              </span><span class="key-phrase">Only approaches based on Large Language Models</span> are allowed, either:
+            </p>
+            
+            <ul class="list-disc pl-6 mb-4 space-y-1">
+              <li>in fine-tuning settings, or</li>
+              <li>using Retrieval-Augmented Generation strategies.</li>
+            </ul>
+            
+            <p class="mb-4">
+              The evaluation will focus on the <span class="key-phrase">Cell Entity Annotation (CEA) task</span>, but will also take into account the ability of the proposed approaches to effectively deal with the following key challenges:
+            </p>
+            
+            <div class="challenge-grid">
+              <div class="challenge-item">
+                <span class="challenge-badge" style="background-color: hsla(217, 91%, 60%, 0.15); border-color: hsla(217, 91%, 60%, 0.3); color: hsl(217, 91%, 80%);">
+                  Disambiguation
+                </span>
+                <span class="challenge-description">Correctly linking ambiguous mentions to the intended entities.</span>
+              </div>
+              
+              <div class="challenge-item">
+                <span class="challenge-badge" style="background-color: hsla(247, 91%, 60%, 0.15); border-color: hsla(247, 91%, 60%, 0.3); color: hsl(247, 91%, 80%);">
+                  Homonymy
+                </span>
+                <span class="challenge-description">Managing mentions referring to entities with identical or very similar names.</span>
+              </div>
+              
+              <div class="challenge-item">
+                <span class="challenge-badge" style="background-color: hsla(277, 91%, 60%, 0.15); border-color: hsla(277, 91%, 60%, 0.3); color: hsl(277, 91%, 80%);">
+                  Alias resolution
+                </span>
+                <span class="challenge-description">Recognising entities referred by alternative names, acronyms, or nicknames.</span>
+              </div>
+              
+              <div class="challenge-item">
+                <span class="challenge-badge" style="background-color: hsla(307, 91%, 60%, 0.15); border-color: hsla(307, 91%, 60%, 0.3); color: hsl(307, 91%, 80%);">
+                  NIL Detection
+                </span>
+                <span class="challenge-description">Correctly identifying mentions that do not correspond to any entity in the Knowledge Graph.</span>
+              </div>
+              
+              <div class="challenge-item">
+                <span class="challenge-badge" style="background-color: hsla(7, 91%, 60%, 0.15); border-color: hsla(7, 91%, 60%, 0.3); color: hsl(7, 91%, 80%);">
+                  Noise Robustness
+                </span>
+                <span class="challenge-description">Dealing with incomplete, noisy, or imprecise table contexts.</span>
+              </div>
+              
+              <div class="challenge-item">
+                <span class="challenge-badge" style="background-color: hsla(37, 91%, 60%, 0.15); border-color: hsla(37, 91%, 60%, 0.3); color: hsl(37, 91%, 80%);">
+                  Collective Inference
+                </span>
+                <span class="challenge-description">Leveraging inter-cell and inter-column signals to improve the consistency of annotations.</span>
+              </div>
+            </div>
+            
+            <p class="mt-6">
+              Participants are expected to demonstrate not only strong CEA performance, but also robustness and versatility across all these dimensions, which are critical for real-world table interpretation scenarios.
+            </p>
+            
+            <!-- Download Button with Tooltip -->
+            <div class="flex justify-center mt-8">
+              <div class="tooltip tooltip-enabled">
+                <button disabled class="px-6 py-3 glass-button text-white font-medium transition-all disabled-button">
+                  Download
+                </button>
+                <span class="tooltip-text">Will be activated soon</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Co-Chairs Section with Modern Cards -->
+        <section id="co-chairs" class="scroll-mt-24">
+          <h2 class="text-3xl font-bold mb-6 animate-gradient">
+            Co-Chairs
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Marco Cremaschi -->
+            <div class="chair-card">
+              <div class="p-6">
+                <div class="chair-card-header">
+                  <h3 class="text-xl font-bold text-white">Marco Cremaschi</h3>
+                  <p class="text-gray-400 text-sm mt-1">University of Milan - Bicocca</p>
+                </div>
+                <a href="mailto:marco.cremaschi@unimib.it" class="link flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  marco.cremaschi@unimib.it
+                </a>
+              </div>
+            </div>
+            
+            <!-- Fabio D'Adda -->
+            <div class="chair-card">
+              <div class="p-6">
+                <div class="chair-card-header">
+                  <h3 class="text-xl font-bold text-white">Fabio D'Adda</h3>
+                  <p class="text-gray-400 text-sm mt-1">University of Milan - Bicocca</p>
+                </div>
+                <a href="mailto:fabio.dadda@unimib.it" class="link flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  fabio.dadda@unimib.it
+                </a>
+              </div>
+            </div>
+            
+            <!-- Fidel Jiomekong Azanzi -->
+            <div class="chair-card">
+              <div class="p-6">
+                <div class="chair-card-header">
+                  <h3 class="text-xl font-bold text-white">Fidel Jiomekong Azanzi</h3>
+                  <p class="text-gray-400 text-sm mt-1">University of Yaoundé, Cameroon</p>
+                </div>
+                <a href="mailto:fidel.jiomekong@afrisciences-uyl.cm" class="link flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  fidel.jiomekong@afrisciences-uyl.cm
+                </a>
+              </div>
+            </div>
+            
+            <!-- Ernesto Jimenez-Ruiz -->
+            <div class="chair-card">
+              <div class="p-6">
+                <div class="chair-card-header">
+                  <h3 class="text-xl font-bold text-white">Ernesto Jimenez-Ruiz</h3>
+                  <p class="text-gray-400 text-sm mt-1">City, University of London, University of Oslo</p>
+                </div>
+                <a href="mailto:ernesto.jimenez-ruiz@city.ac.uk" class="link flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  ernesto.jimenez-ruiz@city.ac.uk
+                </a>
+              </div>
+            </div>
+            
+            <!-- Oktie Hassanzadeh -->
+            <div class="chair-card">
+              <div class="p-6">
+                <div class="chair-card-header">
+                  <h3 class="text-xl font-bold text-white">Oktie Hassanzadeh</h3>
+                  <p class="text-gray-400 text-sm mt-1">IBM Research</p>
+                </div>
+                <a href="mailto:hassanzadeh@us.ibm.com" class="link flex items-center text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  hassanzadeh@us.ibm.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Acknowledgements Section -->
+        <section id="acknowledgements" class="scroll-mt-24">
+          <h2 class="text-3xl font-bold mb-6 animate-gradient">
+            Acknowledgements
+          </h2>
+          
+          <div class="p-8">
+            <p class="mb-8 text-center">
+              The challenge is currently supported by IBM Research and the ISWC 2025.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-12">
+              <div class="logo-container w-64 h-40">
+                <img src="imgs/IBM logo small.svg" alt="IBM Logo" class="h-16">
+              </div>
+              <div class="logo-container w-64 h-40">
+                <img src="imgs/iswc.png" alt="ISWC 2025 Logo" class="h-32">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+<!-- Important Dates Tab and Modal -->
+<div id="dates-tab" class="fixed bottom-8 right-8 z-50 glass-button p-3 cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center" aria-label="Show important dates">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+  </svg>
+</div>
+
+<div id="dates-modal" class="fixed inset-0 z-50 flex items-end justify-center pointer-events-none opacity-0 transition-all duration-500 transform translate-y-full">
+  <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm opacity-0 transition-opacity duration-500"></div>
+  <div class="glass w-full max-w-2xl mx-4 mb-4 p-6 relative pointer-events-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold animate-gradient">Important Dates</h2>
+      <button id="close-modal" class="p-2 rounded-full hover:bg-gray-800 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="py-6 bg-grid bg-top">
-    <div class="container flex md:flex-row flex-col items-center">
-      <div
-        class="lg:flex-grow md:w-3/4 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center md:min-w-prose">
-        <h1 class="sm:text-6xl text-3xl mb-4 font-bold bg-title animation-delay-700">
-          SemTab 2025</h1>
-        <p class="mb-8 leading-relaxed">Semantic Web Challenge on Tabular Data to Knowledge Graph Matching</p>
-        <div class="flex flex-col md:flex-row gap-2 justify-center">
-          <a href="#tracks"
-            class="inline-flex justify-center text-primary-foreground bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-primary/80 rounded-md text-lg">Tracks</a>
-          <a href="https://groups.google.com/g/sem-tab-challenge"
-            class="inline-flex justify-center text-center text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-md text-lg">Join
-            the forum</a>
+    <div class="space-y-4">
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">First Call for Challenge Participants</p>
+          <p class="text-gray-400">TBD</p>
         </div>
       </div>
-      <div class="lg:max-w-1/3 md:w-1/4 w-1/2 relative isolate md:ml-auto">
-        <img class="object-cover object-center rounded rotate-6" alt="hero" src="./imgs/prize-success.png">
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">Round 1 data release</p>
+          <p class="text-gray-400">TBD</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">Round 2 data release</p>
+          <p class="text-gray-400">TBD</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">Submission deadline for both rounds</p>
+          <p class="text-gray-400">TBD</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">Paper Submission Deadline (Systems and Datasets)</p>
+          <p class="text-gray-400">TBD</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">Participation invitations to present at ISWC 2025</p>
+          <p class="text-gray-400">TBD</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">Submission of Final Papers</p>
+          <p class="text-gray-400">TBD</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="indicator-dot mt-1.5"></div>
+        <div>
+          <p class="font-semibold">Challenge presentation during ISWC</p>
+          <p class="text-gray-400">November, 2025</p>
+        </div>
       </div>
     </div>
-  </section>
-
-  <main>
-    <!-- About the Challenge -->
-    <section class="py-6 container">
-      <h2 id="about" class="text-2xl font-bold bg-title animation-delay-1000 scroll-m-20 mb-3">About the Challenge</h2>
-      <p>Tabular data in the form of CSV files is the common input format in a data analytics pipeline. However, a
-        lack of understanding of the semantic structure and meaning of the content may hinder the data analytics
-        process.
-        Thus gaining this semantic understanding will be very valuable for data integration, data cleaning, data
-        mining, machine learning and knowledge discovery tasks. For example, understanding what the data is can help
-        assess
-        what sorts of transformation are appropriate on the data.
-      </p>
-      <p>
-        Tables on the Web may also be the source of highly valuable data. The addition of semantic information to Web
-        tables may enhance a wide range of applications, such as web search, question answering, and Knowledge Base
-        (KB) construction.
-      </p>
-      <p>
-        Tabular data to Knowledge Graph (KG) matching is the process of assigning semantic tags from KGs
-        (e.g., Wikidata or DBpedia) to the elements of the table. This task however is often difficult in practice due
-        to metadata (e.g., table and column names) being missing, incomplete or ambiguous.
-      </p>
-      <p>
-        The <a href="http://www.cs.ox.ac.uk/isg/challenges/sem-tab/" target="_blank">SemTab challenge</a> aims at
-        benchmarking systems dealing with the tabular data to KG matching problem, so as to facilitate their
-        comparison on the same basis and the reproducibility of the results.
-      </p>
-      <p>
-        The 2025 edition of this challenge will be collocated with the <a
-          href="https://iswc2025.semanticweb.org/"
-          target="_blank">24st International Semantic Web Conference</a>.
-      </p>
-    </section>
-
-    <!-- Tracks -->
-    <section class="py-6 container">
-      <h2 class="text-2xl font-bold mb-3 bg-title animation-delay-75 scroll-m-20" id="tracks">Challenge Tracks</h2>
-
-      <!-- Accuracy -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-1">
-          <div class="flex-shrink-0 h-4 w-2 bg-move rounded-sm"></div>
-          <h3 class="text-xl font-bold">Coming soon</h3>
+  </div>
+</div>
+    </main>
+    
+    <footer class="footer mt-16 py-8">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="mb-4 md:mb-0">© <span id="current-year"></span> SemTab 2025. All rights reserved.</p>
         </div>
-
       </div>
-     
-    </section>
+    </footer>
+  </div>
 
-    <!-- Co-Chairs -->
-    <section class="py-6 bg-grid bg-left-bottom container">
-      <h2 class="text-2xl font-bold bg-title animation-delay-75 mb-3">Co-Chairs</h2>
-      <ul class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 gap-2">
-        <li class="border rounded-md bg-card hover:bg-card-hover">
-          <a href="mailto:marco.cremaschi@unimib.it" class="p-4 flex flex-col">
-            <strong>Marco Cremaschi</strong>
-            <span class="text-slate-500">University of Milan - Bicocca</span>
-            <span class="text-sm flex items-center gap-1 mt-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-mail">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              marco.cremaschi[at]unimib.it
-            </span>
-          </a>
-        </li>
-        <li class="border rounded-md bg-card hover:bg-card-hover">
-          <a href="mailto:fabio.dadda@unimib.it" class="p-4 flex flex-col">
-            <strong>Fabio D'Adda</strong>
-            <span class="text-slate-500">University of Milan - Bicocca</span>
-            <span class="text-sm flex items-center gap-1 mt-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-mail">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              fabio.dadda[at]unimib.it
-            </span>
-          </a>
-        </li>
-        <li class="border rounded-md bg-card hover:bg-card-hover">
-          <a href="mailto:fidel.jiomekong@facsciences-uy1.cm" class="p-4 flex flex-col">
-            <strong>Fidel Jiomekong Azanzi</strong>
-            <span class="text-slate-500">University of Yaounde, Cameroon</span>
-            <span class="text-sm flex items-center gap-1 mt-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-mail">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              fidel.jiomekong[at]facsciences-uy1.cm
-            </span>
-          </a>
-        </li>
-        <li class="border rounded-md bg-card hover:bg-card-hover">
-          <a href="mailto:ernesto.jimenez-ruiz@city.ac.uk" class="p-4 flex flex-col">
-            <strong>Ernesto Jimenez-Ruiz</strong>
-            <span class="text-slate-500">City, University of London, University of Oslo</span>
-            <span class="text-sm flex items-center gap-1 mt-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-mail">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              ernesto.jimenez-ruiz@city.ac.uk
-            </span>
-          </a>
-        </li>
-        <li class="border rounded-md bg-card hover:bg-card-hover">
-          <a href="mailto:hassanzadeh@us.ibm.com" class="p-4 flex flex-col">
-            <strong>Oktie Hassanzadeh</strong>
-            <span class="text-slate-500">IBM Research</span>
-            <span class="text-sm flex items-center gap-1 mt-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="lucide lucide-mail">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              hassanzadeh@us.ibm.com
-            </span>
-          </a>
-        </li>
-      </ul>
-      </p>
-    </section>
+  <script>
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking a link
+    const navLinkElements = document.querySelectorAll('.nav-link');
+    navLinkElements.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) {
+          navLinks.classList.add('hidden');
+        }
+      });
+    });
+    
+    // Highlight active section in navigation
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-link');
+    
+    function highlightNavigation() {
+      let scrollPosition = window.scrollY;
+      
+      // Add extra offset for the hero section
+      const heroSection = document.getElementById('hero');
+      const heroHeight = heroSection.offsetHeight;
+      
+      // Check if we're at the top of the page (hero section)
+      if (scrollPosition < heroHeight - 100) {
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === '#hero') {
+            item.classList.add('active');
+          }
+        });
+        return;
+      }
+      
+      // Check other sections
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          navItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('href') === `#${sectionId}`) {
+              item.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+    
+    // Change navbar background on scroll
+    function handleNavbarScroll() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('shadow-md');
+      } else {
+        navbar.classList.remove('shadow-md');
+      }
+    }
+    
+    window.addEventListener('scroll', () => {
+      highlightNavigation();
+      handleNavbarScroll();
+    });
+    
+    // Trigger once on load
+    highlightNavigation();
+    handleNavbarScroll();
+    
+    // Fix for scroll arrow functionality
+    document.getElementById('scroll-arrow').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Get the about section
+      const aboutSection = document.getElementById('about');
+      
+      // Get the navbar height to adjust scroll position
+      const navbar = document.querySelector('.navbar');
+      const navbarHeight = navbar.offsetHeight;
+      
+      // Calculate the position to scroll to
+      const aboutPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      
+      // Scroll to the about section with smooth behavior
+      window.scrollTo({
+        top: aboutPosition,
+        behavior: 'smooth'
+      });
+      
+      // Visual feedback - add a pulse effect
+      this.classList.add('scale-90');
+      setTimeout(() => {
+        this.classList.remove('scale-90');
+      }, 300);
+    });
+    
+    // Animated blue circles
+    const bgCanvas = document.getElementById('background-canvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    
+    // Set canvas size
+    function setBgCanvasSize() {
+      bgCanvas.width = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+    }
+    
+    setBgCanvasSize();
+    window.addEventListener('resize', setBgCanvasSize);
+    
+    // Circle class for animated circles
+    class AnimatedCircle {
+      constructor(initialX, initialY, initialRadius, color) {
+        this.x = initialX;
+        this.y = initialY;
+        this.radius = initialRadius;
+        this.baseRadius = initialRadius;
+        this.targetRadius = initialRadius;
+        this.color = color;
+        this.vx = (Math.random() - 0.5) * 0.5; // Horizontal velocity
+        this.vy = (Math.random() - 0.5) * 0.5; // Vertical velocity
+        this.radiusVelocity = 0;
+        this.radiusAcceleration = 0.0005;
+        this.lastRadiusChangeTime = Date.now();
+        this.radiusChangeInterval = Math.random() * 5000 + 3000; // 3-8 seconds
+      }
+      
+      update() {
+        // Move the circle
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        // Bounce off edges
+        if (this.x - this.radius < 0 || this.x + this.radius > bgCanvas.width) {
+          this.vx *= -1;
+        }
+        if (this.y - this.radius < 0 || this.y + this.radius > bgCanvas.height) {
+          this.vy *= -1;
+        }
+        
+        // Check if it's time to change the target radius
+        const now = Date.now();
+        if (now - this.lastRadiusChangeTime > this.radiusChangeInterval) {
+          this.targetRadius = this.baseRadius * (Math.random() * 0.5 + 0.75); // 75% to 125% of base radius
+          this.lastRadiusChangeTime = now;
+          this.radiusChangeInterval = Math.random() * 5000 + 3000; // 3-8 seconds
+        }
+        
+        // Smoothly adjust radius towards target
+        if (Math.abs(this.radius - this.targetRadius) > 0.1) {
+          this.radiusVelocity += (this.targetRadius > this.radius) ? this.radiusAcceleration : -this.radiusAcceleration;
+          // Dampen velocity to prevent oscillation
+          this.radiusVelocity *= 0.95;
+          this.radius += this.radiusVelocity;
+        }
+      }
+      
+      draw() {
+        bgCtx.beginPath();
+        const gradient = bgCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+        gradient.addColorStop(0, this.color);
+        gradient.addColorStop(1, 'transparent');
+        bgCtx.fillStyle = gradient;
+        bgCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        bgCtx.fill();
+      }
+    }
+    
+    // Create animated circles
+    const primaryHue = getComputedStyle(document.documentElement).getPropertyValue('--primary-hue').trim();
+    const primarySaturation = getComputedStyle(document.documentElement).getPropertyValue('--primary-saturation').trim();
+    const primaryLightness = getComputedStyle(document.documentElement).getPropertyValue('--primary-lightness').trim();
+    
+    const circleColor = `hsla(${primaryHue}, ${primarySaturation}, ${primaryLightness}, 0.2)`;
+    
+    const circle1 = new AnimatedCircle(
+      bgCanvas.width * 0.2, 
+      bgCanvas.height * 0.3, 
+      300, 
+      circleColor
+    );
+    
+    const circle2 = new AnimatedCircle(
+      bgCanvas.width * 0.8, 
+      bgCanvas.height * 0.7, 
+      250, 
+      circleColor
+    );
+    
+    // Animation loop for background circles
+    function animateBackgroundCircles() {
+      bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+      
+      circle1.update();
+      circle1.draw();
+      
+      circle2.update();
+      circle2.draw();
+      
+      requestAnimationFrame(animateBackgroundCircles);
+    }
+    
+    animateBackgroundCircles();
+    
+    // Interactive graph background with blue accent color for the entire page
+    const canvas = document.getElementById('graph-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let mouseX = width / 2;
+    let mouseY = height / 2;
+    
+    // Set canvas size to full window
+    function setCanvasSize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+    
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+    
+    // Create more nodes for the full page background
+    const nodes = [];
+    const nodeCount = Math.max(150, Math.floor(width * height / 10000)); // Adjust node count based on screen size
+    
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.3, // Slower movement
+        vy: (Math.random() - 0.5) * 0.3,
+        radius: Math.random() * 2 + 1,
+        // Add color position for gradient animation
+        colorPos: Math.random()
+      });
+    }
+    
+    // Handle mouse movement across the entire document
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+    
+    // Function to get color based on position in gradient and current theme
+    function getGradientColor(position) {
+      // Get current theme values from CSS variables
+      const hue = getComputedStyle(document.documentElement).getPropertyValue('--primary-hue').trim();
+      const saturation = getComputedStyle(document.documentElement).getPropertyValue('--primary-saturation').trim();
+      const lightness = getComputedStyle(document.documentElement).getPropertyValue('--primary-lightness').trim();
+      
+      // Create a gradient from primary-dark to primary color
+      const darkBlue = { 
+        h: parseInt(hue), 
+        s: parseInt(saturation), 
+        l: parseInt(lightness) - 10 
+      };
+      const lightBlue = { 
+        h: parseInt(hue), 
+        s: parseInt(saturation), 
+        l: parseInt(lightness) 
+      };
+      
+      // Interpolate between the colors in HSL space
+      const h = darkBlue.h;
+      const s = Math.floor(darkBlue.s + position * (lightBlue.s - darkBlue.s));
+      const l = Math.floor(darkBlue.l + position * (lightBlue.l - darkBlue.l));
+      
+      return `hsla(${h}, ${s}%, ${l}%, 0.4)`; // More transparent for background
+    }
+    
+    // Animation loop
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      
+      for (let i = 0; i < nodes.length; i++) {
+        const nodeA = nodes[i];
+        
+        // Update color position for gradient animation
+        nodeA.colorPos = (nodeA.colorPos + 0.0005) % 1; // Slower color change
+        const nodeColor = getGradientColor(nodeA.colorPos);
+        
+        // Draw connections to nearby nodes
+        for (let j = i + 1; j < nodes.length; j++) {
+          const nodeB = nodes[j];
+          const dx = nodeB.x - nodeA.x;
+          const dy = nodeB.y - nodeA.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          if (distance < 150) { // Increased connection distance
+            // Create gradient for the line
+            const gradient = ctx.createLinearGradient(nodeA.x, nodeA.y, nodeB.x, nodeB.y);
+            gradient.addColorStop(0, getGradientColor(nodeA.colorPos));
+            gradient.addColorStop(1, getGradientColor(nodeB.colorPos));
+            
+            // Adjust opacity based on distance
+            const opacity = 1 - distance / 150;
+            ctx.strokeStyle = gradient;
+            ctx.globalAlpha = opacity * 0.5; // More subtle connections
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          }
+        }
+        
+        // Update node position
+        nodeA.x += nodeA.vx;
+        nodeA.y += nodeA.vy;
+        
+        // Bounce off edges
+        if (nodeA.x < 0 || nodeA.x > width) nodeA.vx *= -1;
+        if (nodeA.y < 0 || nodeA.y > height) nodeA.vy *= -1;
+        
+        // Apply slight attraction to mouse
+        const dx = mouseX - nodeA.x;
+        const dy = mouseY - nodeA.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 300) { // Increased mouse influence range
+          nodeA.vx += dx / distance * 0.01; // More subtle effect
+          nodeA.vy += dy / distance * 0.01;
+        }
+        
+        // Limit velocity
+        const speed = Math.sqrt(nodeA.vx * nodeA.vx + nodeA.vy * nodeA.vy);
+        if (speed > 1) {
+          nodeA.vx = (nodeA.vx / speed) * 1;
+          nodeA.vy = (nodeA.vy / speed) * 1;
+        }
+        
+        // Draw node
+        ctx.fillStyle = nodeColor;
+        ctx.beginPath();
+        ctx.arc(nodeA.x, nodeA.y, nodeA.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
 
-    <!-- Acknowledgements -->
-    <section class="py-6 container">
-      <h2 class="text-2xl font-bold bg-title animation-delay-500 mb-3">Acknowledgements</h2>
-      <p>
-        The challenge is currently supported by the <a href="http://www.research.ibm.com/">IBM Research</a> and the <a href="https://iswc2025.semanticweb.org/"> ISWC 2025</a>.
-      </p>
-      <div class="grid grid-cols-3 place-content-center place-items-center max-w-2xl">
-        <a href="" class="bg-card hover:bg-card-hover border w-full h-full flex justify-center items-center">
-          <img src="./imgs/IBM logo small.svg" alt="IBM Research" class="w-full p-4 max-w-56">
-        </a>
-        <a href="" class="bg-card hover:bg-card-hover border border-l-0 w-full h-full flex justify-center items-center">
-          <img src="./imgs/iswc.png" alt="ISWC 2023" class="w-full p-4 max-w-56">
-        </a>
-      </div>
-    </section>
-  </main>
+// Important Dates Modal Functionality
+const datesTab = document.getElementById('dates-tab');
+const datesModal = document.getElementById('dates-modal');
+const closeModal = document.getElementById('close-modal');
+const modalBackdrop = document.querySelector('.modal-backdrop');
 
-  <script src="./js/main.min.js" defer></script>
+// Open modal when tab is clicked
+datesTab.addEventListener('click', () => {
+  datesModal.classList.add('modal-open');
+  document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+});
+
+// Close modal when X button is clicked
+closeModal.addEventListener('click', () => {
+  datesModal.classList.remove('modal-open');
+  document.body.style.overflow = ''; // Re-enable scrolling
+});
+
+// Close modal when clicking outside the modal content
+modalBackdrop.addEventListener('click', () => {
+  datesModal.classList.remove('modal-open');
+  document.body.style.overflow = ''; // Re-enable scrolling
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && datesModal.classList.contains('modal-open')) {
+    datesModal.classList.remove('modal-open');
+    document.body.style.overflow = ''; // Re-enable scrolling
+  }
+});
+  </script>
 </body>
-
 </html>
