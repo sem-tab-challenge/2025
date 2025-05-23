@@ -6,6 +6,8 @@
   <title>SemTab 2025 - Semantic Web Challenge</title>
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <script>
     tailwind.config = {
       theme: {
@@ -502,15 +504,25 @@
 
 /* Important Dates Tab and Modal Styles */
 #dates-tab {
-  animation: pulse 2s infinite;
+  animation: pulse-red 2s infinite;
   border-radius: 50%;
   width: 3.5rem;
   height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#dates-tab svg {
+#dates-tab i.fas {
   color: var(--color-primary);
-  filter: drop-shadow(0 0 5px hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.5));
+  font-size: 2rem;
+  line-height: 1;
+  margin: 0;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #dates-modal .indicator-dot {
@@ -527,15 +539,15 @@
   opacity: 1 !important;
 }
 
-@keyframes pulse {
+@keyframes pulse-red {
   0% {
-    box-shadow: 0 0 0 0 hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.4);
+    box-shadow: 0 0 0 0 hsla(0, 100%, 60%, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 10px hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0);
+    box-shadow: 0 0 0 10px hsla(0, 100%, 60%, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0);
+    box-shadow: 0 0 0 0 hsla(0, 100%, 60%, 0);
   }
 }
   </style>
@@ -590,7 +602,7 @@
             <a href="#tracks" class="px-6 py-3 glass-button text-white font-medium transition-all">
               Tracks
             </a>
-            <a href="#" class="px-6 py-3 glass font-medium hover:bg-opacity-80 transition-colors">
+            <a href="https://groups.google.com/g/sem-tab-challenge" target="_blank" class="px-6 py-3 glass font-medium hover:bg-opacity-80 transition-colors">
               Join the forum
             </a>
           </div>
@@ -648,7 +660,7 @@
             </div>
             
             <p class="mb-4">
-              In SemTab 2025, participants will address the Semantic Table Interpretation challenge using a carefully selected subset of <span class="key-phrase">844 tables</span> from the new version of the <span class="key-phrase">MammoTab dataset</span>, comprising a total of <span class="key-phrase">84,185 cell</span> annotations. MammoTab is a large-scale benchmark designed to provide realistic and complex scenarios, including tables affected by typical challenges of web and Wikipedia data.
+              In SemTab 2025, participants will address the Semantic Table Interpretation challenge using a carefully selected subset of <span class="key-phrase">870 tables</span> from the new version of the <span class="key-phrase">MammoTab dataset <a href="https://unimib-datai.github.io/mammotab-docs/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt text-primary ml-1 text-sm"></i></a></span>, comprising a total of <span class="key-phrase">84,907 cell</span> annotations. MammoTab is a large-scale benchmark designed to provide realistic and complex scenarios, including tables affected by typical challenges of web and Wikipedia data.
             </p>
             
             <p class="mb-4">
@@ -739,9 +751,7 @@
                   <p class="text-gray-400 text-sm mt-1">University of Milan - Bicocca</p>
                 </div>
                 <a href="mailto:marco.cremaschi@unimib.it" class="link flex items-center text-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <i class="fas fa-envelope h-4 w-4 mr-2"></i>
                   marco.cremaschi@unimib.it
                 </a>
               </div>
@@ -755,9 +765,7 @@
                   <p class="text-gray-400 text-sm mt-1">University of Milan - Bicocca</p>
                 </div>
                 <a href="mailto:fabio.dadda@unimib.it" class="link flex items-center text-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <i class="fas fa-envelope h-4 w-4 mr-2"></i>
                   fabio.dadda@unimib.it
                 </a>
               </div>
@@ -771,9 +779,7 @@
                   <p class="text-gray-400 text-sm mt-1">University of Yaoundé, Cameroon</p>
                 </div>
                 <a href="mailto:fidel.jiomekong@afrisciences-uyl.cm" class="link flex items-center text-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <i class="fas fa-envelope h-4 w-4 mr-2"></i>
                   fidel.jiomekong@afrisciences-uyl.cm
                 </a>
               </div>
@@ -787,9 +793,7 @@
                   <p class="text-gray-400 text-sm mt-1">City, University of London, University of Oslo</p>
                 </div>
                 <a href="mailto:ernesto.jimenez-ruiz@city.ac.uk" class="link flex items-center text-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <i class="fas fa-envelope h-4 w-4 mr-2"></i>
                   ernesto.jimenez-ruiz@city.ac.uk
                 </a>
               </div>
@@ -803,9 +807,7 @@
                   <p class="text-gray-400 text-sm mt-1">IBM Research</p>
                 </div>
                 <a href="mailto:hassanzadeh@us.ibm.com" class="link flex items-center text-sm">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <i class="fas fa-envelope h-4 w-4 mr-2"></i>
                   hassanzadeh@us.ibm.com
                 </a>
               </div>
@@ -838,9 +840,7 @@
 
 <!-- Important Dates Tab and Modal -->
 <div id="dates-tab" class="fixed bottom-8 right-8 z-50 glass-button p-3 cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center" aria-label="Show important dates">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-  </svg>
+  <i class="fas fa-calendar-alt h-6 w-6"></i>
 </div>
 
 <div id="dates-modal" class="fixed inset-0 z-50 flex items-end justify-center pointer-events-none opacity-0 transition-all duration-500 transform translate-y-full">
@@ -858,57 +858,43 @@
       <div class="flex">
         <div class="indicator-dot mt-1.5"></div>
         <div>
-          <p class="font-semibold">First Call for Challenge Participants</p>
-          <p class="text-gray-400">TBD</p>
+          <p class="font-semibold">Release datasets and instructions</p>
+          <p class="text-gray-400">June 2<sup>nd</sup></p>
         </div>
       </div>
       <div class="flex">
         <div class="indicator-dot mt-1.5"></div>
         <div>
-          <p class="font-semibold">Round 1 data release</p>
-          <p class="text-gray-400">TBD</p>
+          <p class="font-semibold">Submission deadline</p>
+          <p class="text-gray-400">July 10<sup>th</sup></p>
         </div>
       </div>
       <div class="flex">
         <div class="indicator-dot mt-1.5"></div>
         <div>
-          <p class="font-semibold">Round 2 data release</p>
-          <p class="text-gray-400">TBD</p>
+          <p class="font-semibold">Evaluation</p>
+          <p class="text-gray-400">week of July 21<sup>st</sup></p>
         </div>
       </div>
       <div class="flex">
         <div class="indicator-dot mt-1.5"></div>
         <div>
-          <p class="font-semibold">Submission deadline for both rounds</p>
-          <p class="text-gray-400">TBD</p>
+          <p class="font-semibold">Results announced</p>
+          <p class="text-gray-400">July 28<sup>th</sup></p>
         </div>
       </div>
       <div class="flex">
         <div class="indicator-dot mt-1.5"></div>
         <div>
-          <p class="font-semibold">Paper Submission Deadline (Systems and Datasets)</p>
-          <p class="text-gray-400">TBD</p>
+          <p class="font-semibold">Invitation to present at ISWC</p>
+          <p class="text-gray-400">July 31<sup>st</sup></p>
         </div>
       </div>
       <div class="flex">
         <div class="indicator-dot mt-1.5"></div>
         <div>
-          <p class="font-semibold">Participation invitations to present at ISWC 2025</p>
-          <p class="text-gray-400">TBD</p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Submission of Final Papers</p>
-          <p class="text-gray-400">TBD</p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Challenge presentation during ISWC</p>
-          <p class="text-gray-400">November, 2025</p>
+          <p class="font-semibold">Paper submission deadline</p>
+          <p class="text-gray-400">October 20<sup>th</sup></p>
         </div>
       </div>
     </div>
