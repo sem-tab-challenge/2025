@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SemTab 2025 - Semantic Web Challenge</title>
+  
+  <!-- Meta tags essenziali -->
+  <title>SemTab 2025 - Semantic Web Challenge on Tabular Data to Knowledge Graph Matching</title>
+  <meta name="description" content="SemTab 2025 is a Semantic Web Challenge focused on matching tabular data to Knowledge Graphs. Join the challenge at ISWC 2025 to benchmark your systems.">
+  <meta name="keywords" content="SemTab, Semantic Web, Knowledge Graph, Tabular Data, ISWC 2025, Challenge">
+  <meta name="author" content="SemTab 2025 Organizers">
+  
+  <!-- Open Graph tags per social media -->
+  <meta property="og:title" content="SemTab 2025 - Semantic Web Challenge">
+  <meta property="og:description" content="Join the Semantic Web Challenge on Tabular Data to Knowledge Graph Matching at ISWC 2025">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sem-tab-challenge.github.io/2025/">
+
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome for Icons -->
@@ -561,7 +573,7 @@
   
   <div class="content-container">
     <!-- Navigation Menu with Glassmorphism -->
-    <header class="navbar fixed top-0 left-0 right-0 transition-all duration-300">
+    <header class="navbar fixed top-0 left-0 right-0 transition-all duration-300" role="banner">
       <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
         <!-- Empty space where logo was -->
         <div class="w-8"></div>
@@ -574,7 +586,7 @@
         </button>
 
         <!-- Navigation Links - Solid colors -->
-        <nav id="nav-links" class="hidden md:flex flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 md:space-x-6">
+        <nav id="nav-links" class="hidden md:flex flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 md:space-x-6" role="navigation" aria-label="Main navigation">
           <a href="#hero" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Home</a>
           <a href="#about" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">About</a>
           <a href="#tracks" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Tracks</a>
@@ -587,9 +599,9 @@
       </div>
     </header>
     
-    <main>
+    <main role="main">
       <!-- Hero Section -->
-      <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden pt-16">
+      <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden pt-16" role="banner" aria-label="Hero section">
         <div class="text-center px-4 max-w-4xl">
           <h1 class="text-6xl md:text-7xl font-bold mb-4 flex justify-center items-baseline">
             <span class="semtab-gradient">SemTab</span>
@@ -619,7 +631,7 @@
       
       <div class="container mx-auto px-4 py-8 space-y-16">
         <!-- About Section -->
-        <section id="about" class="scroll-mt-24">
+        <section id="about" class="scroll-mt-24" role="region" aria-label="About the challenge">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             About the Challenge
           </h2>
@@ -648,12 +660,12 @@
         </section>
         
         <!-- Tracks Section -->
-        <section id="tracks" class="scroll-mt-24">
+        <section id="tracks" class="scroll-mt-24" role="region" aria-label="Challenge tracks">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             Challenge Tracks
           </h2>
           
-          <div class="glass p-8 space-y-6">
+          <div class="glass p-8  mb-6 space-y-6">
             <!-- MammoTab Title -->
             <div class="mb-6">
               <h3 class="text-4xl md:text-5xl font-bold semtab-gradient inline-block">MammoTab</h3>
@@ -734,10 +746,39 @@
               </div>
             </div>
           </div>
+
+          <div class="glass p-8 space-y-6">
+            <!-- MammoTab Title -->
+            <div class="mb-6">
+              <h3 class="text-4xl md:text-5xl font-bold semtab-gradient inline-block">secu-table</h3>
+            </div>
+            
+            <p class="mb-4">
+              Secu-table is a dataset extracted from security data sources and organised into tables. The secu-table dataset proposed to the participants of the SemTab 2025 involved security data extracted from Common Vulnerability and Exposure (CVE) and Common Weakness Enumeration (CWE) data sources. The dataset is composed of 20% of tables without any errors and 80% of tables containing errors such as ambiguity, nil, missing context, misspelt data, etc. Secu-table dataset is composed of 1,554 tables, divided into 76 tables provided as ground truth and 1,478 tables for testing.
+            </p>
+
+            <p class="mb-4">
+              The participants to the SemTab 2025 challenge are invited to use open source LLMs to address the semantic table interpretation tasks which are: cell entity annotation (CEA), column type annotation (CTA), and column property annotation (CPA) using the SEPSES Computer Security Knowledge Graph (https://sepses.ifs.tuwien.ac.at/) and the CEA task using the Wikidata KG.
+            </p>
+
+            <p class="mb-4">
+              The evaluation of the participants' results will consider the recall, precision, and F-score. In addition to these scores, the participants are invited to provide the evaluation of the LLMs capabilities to make a prediction or to abstain (or to say "I don't know").
+            </p>
+            
+            <!-- Download Button with Tooltip -->
+            <div class="flex justify-center mt-8">
+              <div class="tooltip tooltip-enabled">
+                <button disabled class="px-6 py-3 glass-button text-white font-medium transition-all disabled-button">
+                  Download
+                </button>
+                <span class="tooltip-text">Will be activated soon</span>
+              </div>
+            </div>
+          </div>
         </section>
         
         <!-- Co-Chairs Section with Modern Cards -->
-        <section id="co-chairs" class="scroll-mt-24">
+        <section id="co-chairs" class="scroll-mt-24" role="region" aria-label="Co-chairs">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             Co-Chairs
           </h2>
@@ -784,6 +825,20 @@
                 </a>
               </div>
             </div>
+
+            <!-- Jean Petit Yvelos -->
+            <div class="chair-card">
+              <div class="p-6">
+                <div class="chair-card-header">
+                  <h3 class="text-xl font-bold text-white">Jean Petit Yvelos</h3>
+                  <p class="text-gray-400 text-sm mt-1">University of Yaoundé, Cameroon</p>
+                </div>
+                <a href="mailto:jeanpetityvelos@gmail.com" class="link flex items-center text-sm">
+                  <i class="fas fa-envelope h-4 w-4 mr-2"></i>
+                  jeanpetityvelos@gmail.com
+                </a>
+              </div>
+            </div>
             
             <!-- Ernesto Jimenez-Ruiz -->
             <div class="chair-card">
@@ -816,7 +871,7 @@
         </section>
         
         <!-- Acknowledgements Section -->
-        <section id="acknowledgements" class="scroll-mt-24">
+        <section id="acknowledgements" class="scroll-mt-24" role="region" aria-label="Acknowledgements">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             Acknowledgements
           </h2>
@@ -902,7 +957,7 @@
 </div>
     </main>
     
-    <footer class="footer mt-16 py-8">
+    <footer class="footer mt-16 py-8" role="contentinfo">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="mb-4 md:mb-0">© <span id="current-year"></span> SemTab 2025. All rights reserved.</p>
