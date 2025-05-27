@@ -562,6 +562,31 @@
     box-shadow: 0 0 0 0 hsla(0, 100%, 60%, 0);
   }
 }
+
+/* Stili per le date nella modale */
+.date-item.past {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.date-item.upcoming {
+  animation: pulse-upcoming 2s infinite;
+}
+
+@keyframes pulse-upcoming {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.4);
+  }
+  70% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
+  }
+}
   </style>
 </head>
 <body>
@@ -900,7 +925,7 @@
 
 <!-- Important Dates Tab and Modal -->
 <div id="dates-tab" class="fixed bottom-8 right-8 z-50 glass-button p-3 cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center" aria-label="Show important dates">
-  <i class="fas fa-calendar-alt h-6 w-6"></i>
+  <i class="fas fa-calendar-alt h-6 w-6" style="color: #ef4444 !important;"></i>
 </div>
 
 <div id="dates-modal" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none opacity-0 transition-all duration-500 transform translate-y-full">
@@ -915,42 +940,42 @@
       </button>
     </div>
     <div class="space-y-4">
-      <div class="flex">
+      <div class="flex date-item" data-date="2025-06-02">
         <div class="indicator-dot mt-1.5"></div>
         <div>
           <p class="font-semibold">Release datasets and instructions</p>
           <p class="text-gray-400">June 2<sup>nd</sup></p>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex date-item" data-date="2025-07-10">
         <div class="indicator-dot mt-1.5"></div>
         <div>
           <p class="font-semibold">Submission deadline</p>
           <p class="text-gray-400">July 10<sup>th</sup></p>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex date-item" data-date="2025-07-21">
         <div class="indicator-dot mt-1.5"></div>
         <div>
           <p class="font-semibold">Evaluation</p>
           <p class="text-gray-400">week of July 21<sup>st</sup></p>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex date-item" data-date="2025-07-28">
         <div class="indicator-dot mt-1.5"></div>
         <div>
           <p class="font-semibold">Results announced</p>
           <p class="text-gray-400">July 28<sup>th</sup></p>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex date-item" data-date="2025-07-31">
         <div class="indicator-dot mt-1.5"></div>
         <div>
           <p class="font-semibold">Invitation to present at ISWC</p>
           <p class="text-gray-400">July 31<sup>st</sup></p>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex date-item" data-date="2025-10-20">
         <div class="indicator-dot mt-1.5"></div>
         <div>
           <p class="font-semibold">Paper submission deadline</p>
@@ -1337,10 +1362,35 @@ const datesModal = document.getElementById('dates-modal');
 const closeModal = document.getElementById('close-modal');
 const modalBackdrop = document.querySelector('.modal-backdrop');
 
-// Open modal when tab is clicked
+// Funzione per gestire le date nella modale
+function updateDatesStatus() {
+  const today = new Date();
+  const dateItems = document.querySelectorAll('.date-item');
+  let foundUpcoming = false;
+
+  dateItems.forEach(item => {
+    const dateStr = item.getAttribute('data-date');
+    const itemDate = new Date(dateStr);
+    
+    // Rimuovi le classi precedenti
+    item.classList.remove('past', 'upcoming');
+    
+    if (itemDate < today) {
+      // Data passata
+      item.classList.add('past');
+    } else if (!foundUpcoming) {
+      // Prima data futura
+      item.classList.add('upcoming');
+      foundUpcoming = true;
+    }
+  });
+}
+
+// Aggiorna lo stato delle date quando la modale viene aperta
 datesTab.addEventListener('click', () => {
   datesModal.classList.add('modal-open');
-  document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+  document.body.style.overflow = 'hidden';
+  updateDatesStatus();
 });
 
 // Close modal when X button is clicked
@@ -1362,6 +1412,9 @@ document.addEventListener('keydown', (e) => {
     document.body.style.overflow = ''; // Re-enable scrolling
   }
 });
+
+// Aggiorna lo stato delle date anche al caricamento della pagina
+document.addEventListener('DOMContentLoaded', updateDatesStatus);
   </script>
 </body>
 </html>
