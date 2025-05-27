@@ -517,9 +517,6 @@
 /* Important Dates Tab and Modal Styles */
 #dates-tab {
   animation: pulse-red 2s infinite;
-  border-radius: 50%;
-  width: 3.5rem;
-  height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -617,6 +614,9 @@
           <a href="#tracks" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Tracks</a>
           <a href="#co-chairs" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Co-Chairs</a>
           <a href="#acknowledgements" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Acknowledgements</a>
+          <button id="dates-tab" class="nav-link py-2 md:py-0 px-4 bg-primary bg-opacity-20 text-white rounded-md hover:bg-opacity-40 transition-all duration-200">
+            Dates
+          </button>
         </nav>
 
         <!-- Empty space where theme toggle was -->
@@ -924,10 +924,6 @@
       </div>
 
 <!-- Important Dates Tab and Modal -->
-<div id="dates-tab" class="fixed bottom-8 right-8 z-50 glass-button p-3 cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center" aria-label="Show important dates">
-  <i class="fas fa-calendar-alt h-6 w-6" style="color: #ef4444 !important;"></i>
-</div>
-
 <div id="dates-modal" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none opacity-0 transition-all duration-500 transform translate-y-full">
   <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm opacity-0 transition-all duration-500"></div>
   <div class="glass w-full max-w-2xl mx-4 p-6 relative pointer-events-auto transform transition-all duration-500 scale-95 translate-y-4">
