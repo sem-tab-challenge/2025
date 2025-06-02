@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Meta tags essenziali -->
   <title>SemTab 2025 - Semantic Web Challenge on Tabular Data to Knowledge Graph Matching</title>
-  <meta name="description" content="SemTab 2025 is a Semantic Web Challenge focused on matching tabular data to Knowledge Graphs. Join the challenge at ISWC 2025 to benchmark your systems.">
+  <meta name="description"
+    content="SemTab 2025 is a Semantic Web Challenge focused on matching tabular data to Knowledge Graphs. Join the challenge at ISWC 2025 to benchmark your systems.">
   <meta name="keywords" content="SemTab, Semantic Web, Knowledge Graph, Tabular Data, ISWC 2025, Challenge">
   <meta name="author" content="SemTab 2025 Organizers">
-  
+
   <!-- Open Graph tags per social media -->
   <meta property="og:title" content="SemTab 2025 - Semantic Web Challenge">
-  <meta property="og:description" content="Join the Semantic Web Challenge on Tabular Data to Knowledge Graph Matching at ISWC 2025">
+  <meta property="og:description"
+    content="Join the Semantic Web Challenge on Tabular Data to Knowledge Graph Matching at ISWC 2025">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sem-tab-challenge.github.io/2025/">
 
@@ -42,33 +45,35 @@
       }
     }
   </script>
-  
+
   <style>
     /* Dynamic Color Palette System - All colors derived from primary */
     :root {
       /* PRIMARY COLOR - THE ONLY DIRECTLY SET COLOR */
-      --primary-hue: 217; /* Blue */
+      --primary-hue: 217;
+      /* Blue */
       --primary-saturation: 91%;
       --primary-lightness: 60%;
-      
+
       /* Primary color and variations - derived using HSL adjustments */
       --color-primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
       --color-primary-light: hsl(var(--primary-hue), calc(var(--primary-saturation) - 10%), calc(var(--primary-lightness) + 10%));
       --color-primary-dark: hsl(var(--primary-hue), calc(var(--primary-saturation) + 5%), calc(var(--primary-lightness) - 10%));
       --color-primary-darker: hsl(var(--primary-hue), calc(var(--primary-saturation) + 10%), calc(var(--primary-lightness) - 20%));
-      
+
       /* Secondary colors - derived by shifting the hue */
-      --secondary-hue: calc(var(--primary-hue) + 30); /* Analogous color (shift by 30 degrees) */
+      --secondary-hue: calc(var(--primary-hue) + 30);
+      /* Analogous color (shift by 30 degrees) */
       --color-secondary: hsl(var(--secondary-hue), var(--primary-saturation), var(--primary-lightness));
       --color-secondary-light: hsl(var(--secondary-hue), calc(var(--primary-saturation) - 10%), calc(var(--primary-lightness) + 10%));
       --color-secondary-dark: hsl(var(--secondary-hue), calc(var(--primary-saturation) + 5%), calc(var(--primary-lightness) - 10%));
-      
+
       /* Accent colors - derived using complementary color (opposite on color wheel) */
       --accent-hue: calc(var(--primary-hue) + 180);
       --color-accent: hsl(var(--accent-hue), var(--primary-saturation), var(--primary-lightness));
       --color-accent-light: hsl(var(--accent-hue), calc(var(--primary-saturation) - 10%), calc(var(--primary-lightness) + 10%));
       --color-accent-dark: hsl(var(--accent-hue), calc(var(--primary-saturation) + 5%), calc(var(--primary-lightness) - 10%));
-      
+
       /* Neutral colors - derived by desaturating the primary color */
       --color-neutral-50: hsl(var(--primary-hue), 10%, 98%);
       --color-neutral-100: hsl(var(--primary-hue), 10%, 95%);
@@ -81,27 +86,27 @@
       --color-neutral-800: hsl(var(--primary-hue), 20%, 20%);
       --color-neutral-900: hsl(var(--primary-hue), 25%, 15%);
       --color-neutral-950: hsl(var(--primary-hue), 30%, 5%);
-      
+
       /* Gray colors - derived by further desaturating and darkening */
       --color-gray-700: hsl(var(--primary-hue), 15%, 25%);
       --color-gray-800: hsl(var(--primary-hue), 20%, 15%);
       --color-gray-900: hsl(var(--primary-hue), 25%, 10%);
       --color-gray-950: hsl(var(--primary-hue), 30%, 5%);
-      
+
       /* Dark Theme Colors - derived from the same primary color */
       --color-dark-bg: var(--color-gray-900);
       --color-dark-card: hsla(var(--primary-hue), 20%, 15%, 0.85);
       --color-dark-text: var(--color-neutral-50);
       --color-dark-border: hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.2);
       --color-dark-nav: hsla(var(--primary-hue), 25%, 10%, 0.95);
-      
+
       /* Semantic Colors - derived from primary with hue shifts */
       --color-success: hsl(calc(var(--primary-hue) + 100), var(--primary-saturation), 45%);
       --color-warning: hsl(calc(var(--primary-hue) + 150), var(--primary-saturation), 50%);
       --color-error: hsl(calc(var(--primary-hue) + 180), var(--primary-saturation), 60%);
       --color-info: var(--color-primary);
     }
-    
+
     /* Custom CSS for animations and effects */
     .animate-gradient {
       background-size: 200% auto;
@@ -111,24 +116,26 @@
       color: transparent;
       animation: gradient 8s linear infinite;
     }
-    
+
     /* Oblique Blue to Orange gradient animation for SemTab text */
     .semtab-gradient {
       background-size: 400% 400%;
-      background-image: linear-gradient(
-        135deg, 
-        hsl(217, 91%, 60%) 0%, /* Blue */
-        hsl(217, 91%, 65%) 10%,
-        hsl(230, 91%, 65%) 20%,
-        hsl(250, 91%, 65%) 30%,
-        hsl(270, 91%, 65%) 40%,
-        hsl(290, 91%, 65%) 50%,
-        hsl(310, 91%, 65%) 60%,
-        hsl(330, 91%, 65%) 70%,
-        hsl(350, 91%, 65%) 80%,
-        hsl(30, 91%, 60%) 90%, /* Orange */
-        hsl(217, 91%, 60%) 100% /* Back to blue */
-      );
+      background-image: linear-gradient(135deg,
+          hsl(217, 91%, 60%) 0%,
+          /* Blue */
+          hsl(217, 91%, 65%) 10%,
+          hsl(230, 91%, 65%) 20%,
+          hsl(250, 91%, 65%) 30%,
+          hsl(270, 91%, 65%) 40%,
+          hsl(290, 91%, 65%) 50%,
+          hsl(310, 91%, 65%) 60%,
+          hsl(330, 91%, 65%) 70%,
+          hsl(350, 91%, 65%) 80%,
+          hsl(30, 91%, 60%) 90%,
+          /* Orange */
+          hsl(217, 91%, 60%) 100%
+          /* Back to blue */
+        );
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -139,38 +146,50 @@
       z-index: 1;
       will-change: background-position;
     }
-    
+
     @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
-    
+
     @keyframes obliqueBluOrangeGradient {
       0% {
         background-position: 0% 0%;
       }
+
       25% {
         background-position: 100% 100%;
       }
+
       50% {
         background-position: 100% 0%;
       }
+
       75% {
         background-position: 0% 100%;
       }
+
       100% {
         background-position: 0% 0%;
       }
     }
-    
+
     /* Dark mode styles (only mode available) */
     body {
       background-color: var(--color-dark-bg);
       color: var(--color-dark-text);
       position: relative;
     }
-    
+
     /* Full page background canvas */
     #graph-canvas {
       position: fixed;
@@ -180,13 +199,13 @@
       height: 100%;
       z-index: 0;
     }
-    
+
     /* Content container to appear above the canvas */
     .content-container {
       position: relative;
       z-index: 1;
     }
-    
+
     /* New modern glassmorphism card style with reduced border radius */
     .glass {
       background: var(--color-dark-card);
@@ -207,7 +226,7 @@
       transition: all 0.3s ease;
       border-radius: 0.5rem;
     }
-    
+
     .glass-button:hover {
       background: hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.3);
       border: 1px solid hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.5);
@@ -225,12 +244,12 @@
       transition: all 0.3s ease;
       overflow: hidden;
     }
-    
+
     .chair-card:hover {
       box-shadow: 0 15px 40px 0 hsla(var(--primary-hue), var(--primary-saturation), var(--primary-lightness), 0.2);
       transform: translateY(-2px);
     }
-    
+
     .chair-card-header {
       border-bottom: 1px solid var(--color-dark-border);
       padding-bottom: 0.75rem;
@@ -268,7 +287,7 @@
     html {
       scroll-behavior: smooth;
     }
-    
+
     /* Blue circle background elements */
     #background-canvas {
       position: fixed;
@@ -284,7 +303,7 @@
       color: var(--color-primary);
       transition: all 0.2s ease;
     }
-    
+
     .link:hover {
       color: var(--color-primary-light);
     }
@@ -307,11 +326,11 @@
       transition: all 0.3s ease;
       padding: 1rem;
     }
-    
+
     .logo-container:hover {
       transform: translateY(-5px);
     }
-    
+
     .logo-container img {
       max-width: 100%;
       height: auto;
@@ -475,17 +494,24 @@
     }
 
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
+
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
         transform: translateX(-50%) translateY(0);
       }
+
       40% {
         transform: translateX(-50%) translateY(-10px);
       }
+
       60% {
         transform: translateX(-50%) translateY(-5px);
       }
     }
-    
+
     /* Color Theme Switcher */
     .theme-switcher {
       position: fixed;
@@ -501,7 +527,7 @@
       border: 1px solid var(--color-dark-border);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     }
-    
+
     .color-option {
       width: 30px;
       height: 30px;
@@ -510,91 +536,107 @@
       border: 2px solid transparent;
       transition: all 0.2s ease;
     }
-    
-    .color-option:hover, .color-option.active {
+
+    .color-option:hover,
+    .color-option.active {
       transform: scale(1.1);
       border-color: white;
     }
 
-/* Important Dates Tab and Modal Styles */
-#dates-tab {
-  animation: pulse-red 2s infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    /* Important Dates Tab and Modal Styles */
+    #dates-tab {
+      animation: pulse-red 2s infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-#dates-tab i.fas {
-  color: var(--color-primary);
-  font-size: 2rem;
-  line-height: 1;
-  margin: 0;
-  height: 2rem;
-  width: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    #dates-tab i.fas {
+      color: var(--color-primary);
+      font-size: 2rem;
+      line-height: 1;
+      margin: 0;
+      height: 2rem;
+      width: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-#dates-modal .indicator-dot {
-  flex-shrink: 0;
-}
+    #dates-modal .indicator-dot {
+      flex-shrink: 0;
+    }
 
-.modal-open {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  pointer-events: auto !important;
-}
+    .modal-open {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      pointer-events: auto !important;
+    }
 
-.modal-open .modal-backdrop {
-  opacity: 1 !important;
-}
+    .modal-open .modal-backdrop {
+      opacity: 1 !important;
+    }
 
-@keyframes pulse-red {
-  0% {
-    box-shadow: 0 0 0 0 hsla(0, 100%, 60%, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px hsla(0, 100%, 60%, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 hsla(0, 100%, 60%, 0);
-  }
-}
+    @keyframes pulse-red {
+      0% {
+        box-shadow: 0 0 0 0 hsla(0, 100%, 60%, 0.4);
+      }
 
-/* Stili per le date nella modale */
-.date-item.past {
-  opacity: 0.6;
-  text-decoration: line-through;
-}
+      70% {
+        box-shadow: 0 0 0 10px hsla(0, 100%, 60%, 0);
+      }
 
-.date-item.upcoming {
-  animation: pulse-upcoming 2s infinite;
-}
+      100% {
+        box-shadow: 0 0 0 0 hsla(0, 100%, 60%, 0);
+      }
+    }
 
-@keyframes pulse-upcoming {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.4);
-  }
-  70% {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
-  }
-}
+    /* Stili per le date nella modale */
+    .date-item.past {
+      opacity: 0.6;
+      text-decoration: line-through;
+    }
+
+    .date-item.upcoming {
+      animation: pulse-upcoming 2s infinite;
+    }
+
+    @keyframes pulse-upcoming {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.4);
+      }
+
+      70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
+      }
+    }
   </style>
 </head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LN8WY2JZ6M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-LN8WY2JZ6M');
+</script>
+
 <body>
   <!-- Background canvas for animated blue circles -->
   <canvas id="background-canvas"></canvas>
-  
+
   <!-- Full page background canvas for the moving graph -->
   <canvas id="graph-canvas"></canvas>
-  
+
   <div class="content-container">
     <!-- Navigation Menu with Glassmorphism -->
     <header class="navbar fixed top-0 left-0 right-0 transition-all duration-300" role="banner">
@@ -610,13 +652,17 @@
         </button>
 
         <!-- Navigation Links - Solid colors -->
-        <nav id="nav-links" class="hidden md:flex flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 md:space-x-6" role="navigation" aria-label="Main navigation">
+        <nav id="nav-links" class="hidden md:flex flex-col md:flex-row w-full md:w-auto mt-4 md:mt-0 md:space-x-6"
+          role="navigation" aria-label="Main navigation">
           <a href="#hero" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Home</a>
           <a href="#about" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">About</a>
           <a href="#tracks" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Tracks</a>
-          <a href="#co-chairs" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Co-Chairs</a>
-          <a href="#acknowledgements" class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Acknowledgements</a>
-          <button id="dates-tab" class="nav-link py-2 md:py-0 px-4 bg-primary bg-opacity-20 text-white rounded-md hover:bg-opacity-40 transition-all duration-200">
+          <a href="#co-chairs"
+            class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Co-Chairs</a>
+          <a href="#acknowledgements"
+            class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Acknowledgements</a>
+          <button id="dates-tab"
+            class="nav-link py-2 md:py-0 px-4 bg-primary bg-opacity-20 text-white rounded-md hover:bg-opacity-40 transition-all duration-200">
             Dates
           </button>
         </nav>
@@ -625,10 +671,11 @@
         <div class="w-8"></div>
       </div>
     </header>
-    
+
     <main role="main">
       <!-- Hero Section -->
-      <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden pt-16" role="banner" aria-label="Hero section">
+      <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden pt-16" role="banner"
+        aria-label="Hero section">
         <div class="text-center px-4 max-w-4xl">
           <h1 class="text-6xl md:text-7xl font-bold mb-4 flex justify-center items-baseline">
             <span class="semtab-gradient">SemTab</span>
@@ -641,12 +688,13 @@
             <a href="#tracks" class="px-6 py-3 glass-button text-white font-medium transition-all">
               Tracks
             </a>
-            <a href="https://groups.google.com/g/sem-tab-challenge" target="_blank" class="px-6 py-3 glass font-medium hover:bg-opacity-80 transition-colors">
+            <a href="https://groups.google.com/g/sem-tab-challenge" target="_blank"
+              class="px-6 py-3 glass font-medium hover:bg-opacity-80 transition-colors">
               Join the forum <i class="fas fa-external-link-alt ml-1 text-sm"></i>
             </a>
           </div>
         </div>
-        
+
         <!-- Scroll Down Arrow - Fixed to use button instead of anchor for better control -->
         <button id="scroll-arrow" class="scroll-arrow" aria-label="Scroll to About section">
           <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
@@ -655,116 +703,151 @@
           </svg>
         </button>
       </div>
-      
+
       <div class="container mx-auto px-4 py-8 space-y-16">
         <!-- About Section -->
         <section id="about" class="scroll-mt-24" role="region" aria-label="About the challenge">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             About the Challenge
           </h2>
-          
+
           <div class="glass p-8 space-y-4">
             <p>
-              Tabular data in the form of <span class="key-phrase">CSV files</span> is the common input format in a data analytics pipeline. However, a lack of understanding of the <span class="key-phrase">semantic structure</span> and meaning of the content may hinder the data analytics process. Thus gaining this semantic understanding will be very valuable for <span class="key-phrase">data integration</span>, <span class="key-phrase">data cleaning</span>, <span class="key-phrase">data mining</span>, <span class="key-phrase">machine learning</span> and <span class="key-phrase">knowledge discovery</span> tasks.
+              Tabular data in the form of <span class="key-phrase">CSV files</span> is the common input format in a data
+              analytics pipeline. However, a lack of understanding of the <span class="key-phrase">semantic
+                structure</span> and meaning of the content may hinder the data analytics process. Thus gaining this
+              semantic understanding will be very valuable for <span class="key-phrase">data integration</span>, <span
+                class="key-phrase">data cleaning</span>, <span class="key-phrase">data mining</span>, <span
+                class="key-phrase">machine learning</span> and <span class="key-phrase">knowledge discovery</span>
+              tasks.
             </p>
-            
+
             <p>
-              Tables on the Web may also be the source of highly valuable data. The addition of <span class="key-phrase">semantic information</span> to Web tables may enhance a wide range of applications, such as <span class="key-phrase">web search</span>, <span class="key-phrase">question answering</span>, and <span class="key-phrase">Knowledge Base (KB)</span> construction.
+              Tables on the Web may also be the source of highly valuable data. The addition of <span
+                class="key-phrase">semantic information</span> to Web tables may enhance a wide range of applications,
+              such as <span class="key-phrase">web search</span>, <span class="key-phrase">question answering</span>,
+              and <span class="key-phrase">Knowledge Base (KB)</span> construction.
             </p>
-            
+
             <p>
-              <span class="key-phrase">Tabular data to Knowledge Graph (KG) matching</span> is the process of assigning semantic tags from KGs (e.g., <span class="key-phrase">Wikidata</span> or <span class="key-phrase">DBpedia</span>) to the elements of the table. This task however is often difficult in practice due to metadata (e.g., table and column names) being missing, incomplete or ambiguous.
+              <span class="key-phrase">Tabular data to Knowledge Graph (KG) matching</span> is the process of assigning
+              semantic tags from KGs (e.g., <span class="key-phrase">Wikidata</span> or <span
+                class="key-phrase">DBpedia</span>) to the elements of the table. This task however is often difficult in
+              practice due to metadata (e.g., table and column names) being missing, incomplete or ambiguous.
             </p>
-            
+
             <p>
-              The <span class="key-phrase">SemTab challenge</span> aims at benchmarking systems dealing with the tabular data to KG matching problem, so as to facilitate their comparison on the same basis and the <span class="key-phrase">reproducibility</span> of the results.
+              The <span class="key-phrase">SemTab challenge</span> aims at benchmarking systems dealing with the tabular
+              data to KG matching problem, so as to facilitate their comparison on the same basis and the <span
+                class="key-phrase">reproducibility</span> of the results.
             </p>
-            
+
             <p>
-              The 2025 edition of this challenge will be collocated with the <a class="link" href="https://iswc2025.semanticweb.org" target="_blank" rel="noopener noreferrer">International Semantic Web Conference <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>.
+              The 2025 edition of this challenge will be collocated with the <a class="link"
+                href="https://iswc2025.semanticweb.org" target="_blank" rel="noopener noreferrer">International Semantic
+                Web Conference <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>.
             </p>
           </div>
         </section>
-        
+
         <!-- Tracks Section -->
         <section id="tracks" class="scroll-mt-24" role="region" aria-label="Challenge tracks">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             Challenge Tracks
           </h2>
-          
+
           <div class="glass p-8  mb-6 space-y-6">
             <!-- MammoTab Title -->
             <div class="mb-6">
               <h3 class="text-4xl md:text-5xl font-bold semtab-gradient inline-block">MammoTab</h3>
             </div>
-            
+
             <p class="mb-4">
-              Participants will address the Semantic Table Interpretation challenges using a carefully selected subset of <span class="key-phrase">870 tables</span> from the new version of the
-              <span class="key-phrase">MammoTab dataset <a href="https://unimib-datai.github.io/mammotab-docs/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt text-primary ml-1 text-sm"></i></a></span>,
-              comprising a total of <span class="key-phrase">84,907 cell</span> annotations. MammoTab is a large-scale benchmark designed to provide realistic and complex scenarios, including tables affected by typical challenges of web and Wikipedia data.
+              Participants will address the Semantic Table Interpretation challenges using a carefully selected subset
+              of <span class="key-phrase">870 tables</span> from the new version of the
+              <span class="key-phrase">MammoTab dataset <a href="https://unimib-datai.github.io/mammotab-docs/"
+                  target="_blank" rel="noopener noreferrer"><i
+                    class="fas fa-external-link-alt text-primary ml-1 text-sm"></i></a></span>,
+              comprising a total of <span class="key-phrase">84,907 cell</span> annotations. MammoTab is a large-scale
+              benchmark designed to provide realistic and complex scenarios, including tables affected by typical
+              challenges of web and Wikipedia data.
             </p>
-            
+
             <p class="mb-4">
               <span class="key-phrase">Only approaches based on Large Language Models</span> are allowed, either:</span>
             </p>
-            
+
             <ul class="list-disc pl-6 mb-4 space-y-1">
               <li>in fine-tuning settings, or</li>
               <li>using Retrieval-Augmented Generation strategies.</li>
             </ul>
-            
+
             <p class="mb-4">
-              The evaluation will focus on the <span class="key-phrase">Cell Entity Annotation (CEA) task</span>, but will also take into account the ability of the proposed approaches to effectively deal with the following key challenges:
+              The evaluation will focus on the <span class="key-phrase">Cell Entity Annotation (CEA) task</span>, but
+              will also take into account the ability of the proposed approaches to effectively deal with the following
+              key challenges:
             </p>
-            
+
             <div class="challenge-grid">
               <div class="challenge-item">
-                <span class="challenge-badge" style="background-color: hsla(217, 91%, 60%, 0.15); border-color: hsla(217, 91%, 60%, 0.3); color: hsl(217, 91%, 80%);">
+                <span class="challenge-badge"
+                  style="background-color: hsla(217, 91%, 60%, 0.15); border-color: hsla(217, 91%, 60%, 0.3); color: hsl(217, 91%, 80%);">
                   Disambiguation
                 </span>
-                <span class="challenge-description">Correctly linking ambiguous mentions to the intended entities.</span>
+                <span class="challenge-description">Correctly linking ambiguous mentions to the intended
+                  entities.</span>
               </div>
-              
+
               <div class="challenge-item">
-                <span class="challenge-badge" style="background-color: hsla(247, 91%, 60%, 0.15); border-color: hsla(247, 91%, 60%, 0.3); color: hsl(247, 91%, 80%);">
+                <span class="challenge-badge"
+                  style="background-color: hsla(247, 91%, 60%, 0.15); border-color: hsla(247, 91%, 60%, 0.3); color: hsl(247, 91%, 80%);">
                   Homonymy
                 </span>
-                <span class="challenge-description">Managing mentions referring to entities with identical or very similar names.</span>
+                <span class="challenge-description">Managing mentions referring to entities with identical or very
+                  similar names.</span>
               </div>
-              
+
               <div class="challenge-item">
-                <span class="challenge-badge" style="background-color: hsla(277, 91%, 60%, 0.15); border-color: hsla(277, 91%, 60%, 0.3); color: hsl(277, 91%, 80%);">
+                <span class="challenge-badge"
+                  style="background-color: hsla(277, 91%, 60%, 0.15); border-color: hsla(277, 91%, 60%, 0.3); color: hsl(277, 91%, 80%);">
                   Alias resolution
                 </span>
-                <span class="challenge-description">Recognising entities referred by alternative names, acronyms, or nicknames.</span>
+                <span class="challenge-description">Recognising entities referred by alternative names, acronyms, or
+                  nicknames.</span>
               </div>
-              
+
               <div class="challenge-item">
-                <span class="challenge-badge" style="background-color: hsla(307, 91%, 60%, 0.15); border-color: hsla(307, 91%, 60%, 0.3); color: hsl(307, 91%, 80%);">
+                <span class="challenge-badge"
+                  style="background-color: hsla(307, 91%, 60%, 0.15); border-color: hsla(307, 91%, 60%, 0.3); color: hsl(307, 91%, 80%);">
                   NIL Detection
                 </span>
-                <span class="challenge-description">Correctly identifying mentions that do not correspond to any entity in the Knowledge Graph.</span>
+                <span class="challenge-description">Correctly identifying mentions that do not correspond to any entity
+                  in the Knowledge Graph.</span>
               </div>
-              
+
               <div class="challenge-item">
-                <span class="challenge-badge" style="background-color: hsla(7, 91%, 60%, 0.15); border-color: hsla(7, 91%, 60%, 0.3); color: hsl(7, 91%, 80%);">
+                <span class="challenge-badge"
+                  style="background-color: hsla(7, 91%, 60%, 0.15); border-color: hsla(7, 91%, 60%, 0.3); color: hsl(7, 91%, 80%);">
                   Noise Robustness
                 </span>
                 <span class="challenge-description">Dealing with incomplete, noisy, or imprecise table contexts.</span>
               </div>
-              
+
               <div class="challenge-item">
-                <span class="challenge-badge" style="background-color: hsla(37, 91%, 60%, 0.15); border-color: hsla(37, 91%, 60%, 0.3); color: hsl(37, 91%, 80%);">
+                <span class="challenge-badge"
+                  style="background-color: hsla(37, 91%, 60%, 0.15); border-color: hsla(37, 91%, 60%, 0.3); color: hsl(37, 91%, 80%);">
                   Collective Inference
                 </span>
-                <span class="challenge-description">Leveraging inter-cell and inter-column signals to improve the consistency of annotations.</span>
+                <span class="challenge-description">Leveraging inter-cell and inter-column signals to improve the
+                  consistency of annotations.</span>
               </div>
             </div>
-            
+
             <p class="mt-6">
-              Participants are expected to demonstrate not only strong CEA performance, but also robustness and versatility across all these dimensions, which are critical for real-world table interpretation scenarios.
+              Participants are expected to demonstrate not only strong CEA performance, but also robustness and
+              versatility across all these dimensions, which are critical for real-world table interpretation scenarios.
             </p>
-            
+
             <!-- Download Button with Tooltip -->
             <div class="flex justify-center mt-8">
               <div class="tooltip tooltip-enabled">
@@ -781,22 +864,34 @@
             <div class="mb-6">
               <h3 class="text-4xl md:text-5xl font-bold semtab-gradient inline-block">secu-table</h3>
             </div>
-            
+
             <p class="mb-4">
-              The secu-table dataset involved security data extracted from Common Vulnerability and Exposure (CVE) and Common Weakness Enumeration (CWE) data sources. 
-              The dataset is composed of <span class="key-phrase">20% of tables without any errors</span> and <span class="key-phrase">80% of tables containing errors</span> such as ambiguity, NIL, missing context, misspelt data. 
-              Secu-table dataset is composed of <span class="key-phrase">1,554 tables</span>, divided into <span class="key-phrase">76 tables</span> provided as ground truth and <span class="key-phrase">1,478 tables</span> for testing.
+              The secu-table dataset involved security data extracted from Common Vulnerability and Exposure (CVE) and
+              Common Weakness Enumeration (CWE) data sources.
+              The dataset is composed of <span class="key-phrase">20% of tables without any errors</span> and <span
+                class="key-phrase">80% of tables containing errors</span> such as ambiguity, NIL, missing context,
+              misspelt data.
+              Secu-table dataset is composed of <span class="key-phrase">1,554 tables</span>, divided into <span
+                class="key-phrase">76 tables</span> provided as ground truth and <span class="key-phrase">1,478
+                tables</span> for testing.
             </p>
 
             <p class="mb-4">
-              The participant are invited to use <span class="key-phrase">open source LLMs</span> to address the STI tasks which are: cell entity annotation (CEA), column type annotation (CTA), and column property annotation (CPA) using the <span class="key-phrase">SEPSES Computer Security Knowledge Graph</span> <a href="https://sepses.ifs.tuwien.ac.at/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt ml-1 text-sm text-primary"></i></a> and the CEA task using the <span class="key-phrase">Wikidata KG</span> <a href="https://www.wikidata.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt ml-1 text-sm text-primary"></i></a>.
+              The participant are invited to use <span class="key-phrase">open source LLMs</span> to address the STI
+              tasks which are: cell entity annotation (CEA), column type annotation (CTA), and column property
+              annotation (CPA) using the <span class="key-phrase">SEPSES Computer Security Knowledge Graph</span> <a
+                href="https://sepses.ifs.tuwien.ac.at/" target="_blank" rel="noopener noreferrer"><i
+                  class="fas fa-external-link-alt ml-1 text-sm text-primary"></i></a> and the CEA task using the <span
+                class="key-phrase">Wikidata KG</span> <a href="https://www.wikidata.org/" target="_blank"
+                rel="noopener noreferrer"><i class="fas fa-external-link-alt ml-1 text-sm text-primary"></i></a>.
             </p>
 
             <p class="mb-4">
               The evaluation of the participants' results will consider the recall, precision, and F-score.
-              In addition to these scores, the participants are invited to provide the evaluation of the LLMs capabilities to make a prediction or to abstain (or to say "I don't know").
+              In addition to these scores, the participants are invited to provide the evaluation of the LLMs
+              capabilities to make a prediction or to abstain (or to say "I don't know").
             </p>
-            
+
             <!-- Download Button with Tooltip -->
             <div class="flex justify-center mt-8">
               <div class="tooltip tooltip-enabled">
@@ -808,13 +903,13 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Co-Chairs Section with Modern Cards -->
         <section id="co-chairs" class="scroll-mt-24" role="region" aria-label="Co-chairs">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             Co-Chairs
           </h2>
-          
+
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Marco Cremaschi -->
             <div class="chair-card">
@@ -829,7 +924,7 @@
                 </a>
               </div>
             </div>
-            
+
             <!-- Fabio D'Adda -->
             <div class="chair-card">
               <div class="p-6">
@@ -843,7 +938,7 @@
                 </a>
               </div>
             </div>
-            
+
             <!-- Fidel Jiomekong Azanzi -->
             <div class="chair-card">
               <div class="p-6">
@@ -871,7 +966,7 @@
                 </a>
               </div>
             </div>
-            
+
             <!-- Ernesto Jimenez-Ruiz -->
             <div class="chair-card">
               <div class="p-6">
@@ -885,7 +980,7 @@
                 </a>
               </div>
             </div>
-            
+
             <!-- Oktie Hassanzadeh -->
             <div class="chair-card">
               <div class="p-6">
@@ -901,18 +996,18 @@
             </div>
           </div>
         </section>
-        
+
         <!-- Acknowledgements Section -->
         <section id="acknowledgements" class="scroll-mt-24" role="region" aria-label="Acknowledgements">
           <h2 class="text-3xl font-bold mb-6 animate-gradient">
             Acknowledgements
           </h2>
-          
+
           <div class="p-8">
             <p class="mb-8 text-center">
               The challenge is currently supported by IBM Research and the ISWC 2025.
             </p>
-            
+
             <div class="flex flex-wrap justify-center gap-12">
               <div class="logo-container w-64 h-40">
                 <img src="imgs/IBM logo small.svg" alt="IBM Logo" class="h-16">
@@ -925,66 +1020,71 @@
         </section>
       </div>
 
-<!-- Important Dates Tab and Modal -->
-<div id="dates-modal" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none opacity-0 transition-all duration-500 transform translate-y-full">
-  <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm opacity-0 transition-all duration-500"></div>
-  <div class="glass w-full max-w-2xl mx-4 p-6 relative pointer-events-auto transform transition-all duration-500 scale-95 translate-y-4">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-bold animate-gradient">Important Dates</h2>
-      <button id="close-modal" class="p-2 rounded-full hover:bg-gray-800 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="space-y-4">
-      <div class="flex date-item" data-date="2025-06-02">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Release datasets and instructions</p>
-          <p class="text-gray-400">June 2<sup>nd</sup></p>
+      <!-- Important Dates Tab and Modal -->
+      <div id="dates-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none opacity-0 transition-all duration-500 transform translate-y-full">
+        <div
+          class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm opacity-0 transition-all duration-500">
+        </div>
+        <div
+          class="glass w-full max-w-2xl mx-4 p-6 relative pointer-events-auto transform transition-all duration-500 scale-95 translate-y-4">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold animate-gradient">Important Dates</h2>
+            <button id="close-modal" class="p-2 rounded-full hover:bg-gray-800 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="space-y-4">
+            <div class="flex date-item" data-date="2025-06-02">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Release datasets and instructions</p>
+                <p class="text-gray-400">June 2<sup>nd</sup></p>
+              </div>
+            </div>
+            <div class="flex date-item" data-date="2025-07-10">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Submission deadline</p>
+                <p class="text-gray-400">July 10<sup>th</sup></p>
+              </div>
+            </div>
+            <div class="flex date-item" data-date="2025-07-21">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Evaluation</p>
+                <p class="text-gray-400">week of July 21<sup>st</sup></p>
+              </div>
+            </div>
+            <div class="flex date-item" data-date="2025-07-28">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Results announced</p>
+                <p class="text-gray-400">July 28<sup>th</sup></p>
+              </div>
+            </div>
+            <div class="flex date-item" data-date="2025-07-31">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Invitation to present at ISWC</p>
+                <p class="text-gray-400">July 31<sup>st</sup></p>
+              </div>
+            </div>
+            <div class="flex date-item" data-date="2025-10-20">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Paper submission deadline</p>
+                <p class="text-gray-400">October 20<sup>th</sup></p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="flex date-item" data-date="2025-07-10">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Submission deadline</p>
-          <p class="text-gray-400">July 10<sup>th</sup></p>
-        </div>
-      </div>
-      <div class="flex date-item" data-date="2025-07-21">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Evaluation</p>
-          <p class="text-gray-400">week of July 21<sup>st</sup></p>
-        </div>
-      </div>
-      <div class="flex date-item" data-date="2025-07-28">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Results announced</p>
-          <p class="text-gray-400">July 28<sup>th</sup></p>
-        </div>
-      </div>
-      <div class="flex date-item" data-date="2025-07-31">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Invitation to present at ISWC</p>
-          <p class="text-gray-400">July 31<sup>st</sup></p>
-        </div>
-      </div>
-      <div class="flex date-item" data-date="2025-10-20">
-        <div class="indicator-dot mt-1.5"></div>
-        <div>
-          <p class="font-semibold">Paper submission deadline</p>
-          <p class="text-gray-400">October 20<sup>th</sup></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
     </main>
-    
+
     <footer class="footer mt-16 py-8" role="contentinfo">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center">
@@ -997,15 +1097,15 @@
   <script>
     // Set current year in footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
-    
+
     // Mobile menu toggle
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
-    
+
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('hidden');
     });
-    
+
     // Close mobile menu when clicking a link
     const navLinkElements = document.querySelectorAll('.nav-link');
     navLinkElements.forEach(link => {
@@ -1015,18 +1115,18 @@
         }
       });
     });
-    
+
     // Highlight active section in navigation
     const sections = document.querySelectorAll('section');
     const navItems = document.querySelectorAll('.nav-link');
-    
+
     function highlightNavigation() {
       let scrollPosition = window.scrollY;
-      
+
       // Add extra offset for the hero section
       const heroSection = document.getElementById('hero');
       const heroHeight = heroSection.offsetHeight;
-      
+
       // Check if we're at the top of the page (hero section)
       if (scrollPosition < heroHeight - 100) {
         navItems.forEach(item => {
@@ -1037,19 +1137,19 @@
         });
         return;
       }
-      
+
       // Check other sections
       let currentSection = 'hero';
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 100;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           currentSection = sectionId;
         }
       });
-      
+
       navItems.forEach(item => {
         item.classList.remove('active');
         if (item.getAttribute('href').substring(1) === currentSection) {
@@ -1057,7 +1157,7 @@
         }
       });
     }
-    
+
     // Change navbar background on scroll
     function handleNavbarScroll() {
       const navbar = document.querySelector('.navbar');
@@ -1067,56 +1167,56 @@
         navbar.classList.remove('shadow-md');
       }
     }
-    
+
     window.addEventListener('scroll', () => {
       highlightNavigation();
       handleNavbarScroll();
     });
-    
+
     // Trigger once on load
     highlightNavigation();
     handleNavbarScroll();
-    
+
     // Fix for scroll arrow functionality
-    document.getElementById('scroll-arrow').addEventListener('click', function(e) {
+    document.getElementById('scroll-arrow').addEventListener('click', function (e) {
       e.preventDefault();
-      
+
       // Get the about section
       const aboutSection = document.getElementById('about');
-      
+
       // Get the navbar height to adjust scroll position
       const navbar = document.querySelector('.navbar');
       const navbarHeight = navbar.offsetHeight;
-      
+
       // Calculate the position to scroll to
       const aboutPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-      
+
       // Scroll to the about section with smooth behavior
       window.scrollTo({
         top: aboutPosition,
         behavior: 'smooth'
       });
-      
+
       // Visual feedback - add a pulse effect
       this.classList.add('scale-90');
       setTimeout(() => {
         this.classList.remove('scale-90');
       }, 300);
     });
-    
+
     // Animated blue circles
     const bgCanvas = document.getElementById('background-canvas');
     const bgCtx = bgCanvas.getContext('2d');
-    
+
     // Set canvas size
     function setBgCanvasSize() {
       bgCanvas.width = window.innerWidth;
       bgCanvas.height = window.innerHeight;
     }
-    
+
     setBgCanvasSize();
     window.addEventListener('resize', setBgCanvasSize);
-    
+
     // Circle class for animated circles
     class AnimatedCircle {
       constructor(initialX, initialY, initialRadius, color) {
@@ -1133,12 +1233,12 @@
         this.lastRadiusChangeTime = Date.now();
         this.radiusChangeInterval = Math.random() * 5000 + 3000; // 3-8 seconds
       }
-      
+
       update() {
         // Move the circle
         this.x += this.vx;
         this.y += this.vy;
-        
+
         // Bounce off edges
         if (this.x - this.radius < 0 || this.x + this.radius > bgCanvas.width) {
           this.vx *= -1;
@@ -1146,7 +1246,7 @@
         if (this.y - this.radius < 0 || this.y + this.radius > bgCanvas.height) {
           this.vy *= -1;
         }
-        
+
         // Check if it's time to change the target radius
         const now = Date.now();
         if (now - this.lastRadiusChangeTime > this.radiusChangeInterval) {
@@ -1154,7 +1254,7 @@
           this.lastRadiusChangeTime = now;
           this.radiusChangeInterval = Math.random() * 5000 + 3000; // 3-8 seconds
         }
-        
+
         // Smoothly adjust radius towards target
         if (Math.abs(this.radius - this.targetRadius) > 0.1) {
           this.radiusVelocity += (this.targetRadius > this.radius) ? this.radiusAcceleration : -this.radiusAcceleration;
@@ -1163,7 +1263,7 @@
           this.radius += this.radiusVelocity;
         }
       }
-      
+
       draw() {
         bgCtx.beginPath();
         const gradient = bgCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
@@ -1174,52 +1274,52 @@
         bgCtx.fill();
       }
     }
-    
+
     // Create animated circles
     const primaryHue = getComputedStyle(document.documentElement).getPropertyValue('--primary-hue').trim();
     const primarySaturation = getComputedStyle(document.documentElement).getPropertyValue('--primary-saturation').trim();
     const primaryLightness = getComputedStyle(document.documentElement).getPropertyValue('--primary-lightness').trim();
-    
+
     const circleColor = `hsla(${primaryHue}, ${primarySaturation}, ${primaryLightness}, 0.2)`;
-    
+
     const circle1 = new AnimatedCircle(
-      bgCanvas.width * 0.2, 
-      bgCanvas.height * 0.3, 
-      300, 
+      bgCanvas.width * 0.2,
+      bgCanvas.height * 0.3,
+      300,
       circleColor
     );
-    
+
     const circle2 = new AnimatedCircle(
-      bgCanvas.width * 0.8, 
-      bgCanvas.height * 0.7, 
-      250, 
+      bgCanvas.width * 0.8,
+      bgCanvas.height * 0.7,
+      250,
       circleColor
     );
-    
+
     // Animation loop for background circles
     function animateBackgroundCircles() {
       bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-      
+
       circle1.update();
       circle1.draw();
-      
+
       circle2.update();
       circle2.draw();
-      
+
       requestAnimationFrame(animateBackgroundCircles);
     }
-    
+
     animateBackgroundCircles();
-    
+
     // Interactive graph background with blue accent color for the entire page
     const canvas = document.getElementById('graph-canvas');
     const ctx = canvas.getContext('2d');
-    
+
     let width = window.innerWidth;
     let height = window.innerHeight;
     let mouseX = width / 2;
     let mouseY = height / 2;
-    
+
     // Set canvas size to full window
     function setCanvasSize() {
       width = window.innerWidth;
@@ -1227,14 +1327,14 @@
       canvas.width = width;
       canvas.height = height;
     }
-    
+
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
-    
+
     // Create more nodes for the full page background
     const nodes = [];
     const nodeCount = Math.max(150, Math.floor(width * height / 10000)); // Adjust node count based on screen size
-    
+
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * width,
@@ -1246,64 +1346,64 @@
         colorPos: Math.random()
       });
     }
-    
+
     // Handle mouse movement across the entire document
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     });
-    
+
     // Function to get color based on position in gradient and current theme
     function getGradientColor(position) {
       // Get current theme values from CSS variables
       const hue = getComputedStyle(document.documentElement).getPropertyValue('--primary-hue').trim();
       const saturation = getComputedStyle(document.documentElement).getPropertyValue('--primary-saturation').trim();
       const lightness = getComputedStyle(document.documentElement).getPropertyValue('--primary-lightness').trim();
-      
+
       // Create a gradient from primary-dark to primary color
-      const darkBlue = { 
-        h: parseInt(hue), 
-        s: parseInt(saturation), 
-        l: parseInt(lightness) - 10 
+      const darkBlue = {
+        h: parseInt(hue),
+        s: parseInt(saturation),
+        l: parseInt(lightness) - 10
       };
-      const lightBlue = { 
-        h: parseInt(hue), 
-        s: parseInt(saturation), 
-        l: parseInt(lightness) 
+      const lightBlue = {
+        h: parseInt(hue),
+        s: parseInt(saturation),
+        l: parseInt(lightness)
       };
-      
+
       // Interpolate between the colors in HSL space
       const h = darkBlue.h;
       const s = Math.floor(darkBlue.s + position * (lightBlue.s - darkBlue.s));
       const l = Math.floor(darkBlue.l + position * (lightBlue.l - darkBlue.l));
-      
+
       return `hsla(${h}, ${s}%, ${l}%, 0.4)`; // More transparent for background
     }
-    
+
     // Animation loop
     function animate() {
       ctx.clearRect(0, 0, width, height);
-      
+
       for (let i = 0; i < nodes.length; i++) {
         const nodeA = nodes[i];
-        
+
         // Update color position for gradient animation
         nodeA.colorPos = (nodeA.colorPos + 0.0005) % 1; // Slower color change
         const nodeColor = getGradientColor(nodeA.colorPos);
-        
+
         // Draw connections to nearby nodes
         for (let j = i + 1; j < nodes.length; j++) {
           const nodeB = nodes[j];
           const dx = nodeB.x - nodeA.x;
           const dy = nodeB.y - nodeA.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
+
           if (distance < 150) { // Increased connection distance
             // Create gradient for the line
             const gradient = ctx.createLinearGradient(nodeA.x, nodeA.y, nodeB.x, nodeB.y);
             gradient.addColorStop(0, getGradientColor(nodeA.colorPos));
             gradient.addColorStop(1, getGradientColor(nodeB.colorPos));
-            
+
             // Adjust opacity based on distance
             const opacity = 1 - distance / 150;
             ctx.strokeStyle = gradient;
@@ -1316,103 +1416,104 @@
             ctx.globalAlpha = 1;
           }
         }
-        
+
         // Update node position
         nodeA.x += nodeA.vx;
         nodeA.y += nodeA.vy;
-        
+
         // Bounce off edges
         if (nodeA.x < 0 || nodeA.x > width) nodeA.vx *= -1;
         if (nodeA.y < 0 || nodeA.y > height) nodeA.vy *= -1;
-        
+
         // Apply slight attraction to mouse
         const dx = mouseX - nodeA.x;
         const dy = mouseY - nodeA.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (distance < 300) { // Increased mouse influence range
           nodeA.vx += dx / distance * 0.01; // More subtle effect
           nodeA.vy += dy / distance * 0.01;
         }
-        
+
         // Limit velocity
         const speed = Math.sqrt(nodeA.vx * nodeA.vx + nodeA.vy * nodeA.vy);
         if (speed > 1) {
           nodeA.vx = (nodeA.vx / speed) * 1;
           nodeA.vy = (nodeA.vy / speed) * 1;
         }
-        
+
         // Draw node
         ctx.fillStyle = nodeColor;
         ctx.beginPath();
         ctx.arc(nodeA.x, nodeA.y, nodeA.radius, 0, Math.PI * 2);
         ctx.fill();
       }
-      
+
       requestAnimationFrame(animate);
     }
-    
+
     animate();
 
-// Important Dates Modal Functionality
-const datesTab = document.getElementById('dates-tab');
-const datesModal = document.getElementById('dates-modal');
-const closeModal = document.getElementById('close-modal');
-const modalBackdrop = document.querySelector('.modal-backdrop');
+    // Important Dates Modal Functionality
+    const datesTab = document.getElementById('dates-tab');
+    const datesModal = document.getElementById('dates-modal');
+    const closeModal = document.getElementById('close-modal');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
 
-// Funzione per gestire le date nella modale
-function updateDatesStatus() {
-  const today = new Date();
-  const dateItems = document.querySelectorAll('.date-item');
-  let foundUpcoming = false;
+    // Funzione per gestire le date nella modale
+    function updateDatesStatus() {
+      const today = new Date();
+      const dateItems = document.querySelectorAll('.date-item');
+      let foundUpcoming = false;
 
-  dateItems.forEach(item => {
-    const dateStr = item.getAttribute('data-date');
-    const itemDate = new Date(dateStr);
-    
-    // Rimuovi le classi precedenti
-    item.classList.remove('past', 'upcoming');
-    
-    if (itemDate < today) {
-      // Data passata
-      item.classList.add('past');
-    } else if (!foundUpcoming) {
-      // Prima data futura
-      item.classList.add('upcoming');
-      foundUpcoming = true;
+      dateItems.forEach(item => {
+        const dateStr = item.getAttribute('data-date');
+        const itemDate = new Date(dateStr);
+
+        // Rimuovi le classi precedenti
+        item.classList.remove('past', 'upcoming');
+
+        if (itemDate < today) {
+          // Data passata
+          item.classList.add('past');
+        } else if (!foundUpcoming) {
+          // Prima data futura
+          item.classList.add('upcoming');
+          foundUpcoming = true;
+        }
+      });
     }
-  });
-}
 
-// Aggiorna lo stato delle date quando la modale viene aperta
-datesTab.addEventListener('click', () => {
-  datesModal.classList.add('modal-open');
-  document.body.style.overflow = 'hidden';
-  updateDatesStatus();
-});
+    // Aggiorna lo stato delle date quando la modale viene aperta
+    datesTab.addEventListener('click', () => {
+      datesModal.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+      updateDatesStatus();
+    });
 
-// Close modal when X button is clicked
-closeModal.addEventListener('click', () => {
-  datesModal.classList.remove('modal-open');
-  document.body.style.overflow = ''; // Re-enable scrolling
-});
+    // Close modal when X button is clicked
+    closeModal.addEventListener('click', () => {
+      datesModal.classList.remove('modal-open');
+      document.body.style.overflow = ''; // Re-enable scrolling
+    });
 
-// Close modal when clicking outside the modal content
-modalBackdrop.addEventListener('click', () => {
-  datesModal.classList.remove('modal-open');
-  document.body.style.overflow = ''; // Re-enable scrolling
-});
+    // Close modal when clicking outside the modal content
+    modalBackdrop.addEventListener('click', () => {
+      datesModal.classList.remove('modal-open');
+      document.body.style.overflow = ''; // Re-enable scrolling
+    });
 
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && datesModal.classList.contains('modal-open')) {
-    datesModal.classList.remove('modal-open');
-    document.body.style.overflow = ''; // Re-enable scrolling
-  }
-});
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && datesModal.classList.contains('modal-open')) {
+        datesModal.classList.remove('modal-open');
+        document.body.style.overflow = ''; // Re-enable scrolling
+      }
+    });
 
-// Aggiorna lo stato delle date anche al caricamento della pagina
-document.addEventListener('DOMContentLoaded', updateDatesStatus);
+    // Aggiorna lo stato delle date anche al caricamento della pagina
+    document.addEventListener('DOMContentLoaded', updateDatesStatus);
   </script>
 </body>
+
 </html>
