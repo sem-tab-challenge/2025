@@ -620,6 +620,36 @@
         box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
       }
     }
+
+    @keyframes gradient-bg {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .animate-gradient-bg {
+      animation: gradient-bg 3s ease infinite;
+      background-size: 200% auto;
+    }
+
+    .badge-gradient {
+      background-size: 400% 400%;
+      background-image: linear-gradient(
+        135deg,
+        hsl(217, 91%, 60%) 0%,
+        hsl(217, 91%, 65%) 10%,
+        hsl(230, 91%, 65%) 20%,
+        hsl(250, 91%, 65%) 30%,
+        hsl(270, 91%, 65%) 40%,
+        hsl(290, 91%, 65%) 50%,
+        hsl(310, 91%, 65%) 60%,
+        hsl(330, 91%, 65%) 70%,
+        hsl(350, 91%, 65%) 80%,
+        hsl(30, 91%, 60%) 90%,
+        hsl(217, 91%, 60%) 100%
+      );
+      animation: obliqueBluOrangeGradient 15s ease infinite;
+    }
   </style>
 </head>
 
@@ -665,7 +695,7 @@
           <a href="#acknowledgements"
             class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors">Acknowledgements</a>
           <button id="dates-tab"
-            class="nav-link py-2 md:py-0 px-4 bg-primary bg-opacity-20 text-white rounded-md hover:bg-opacity-40 transition-all duration-200">
+            class="nav-link py-2 md:py-0 px-4  glass-button text-white rounded-md hover:bg-opacity-40 transition-all duration-200">
             Dates
           </button>
         </nav>
@@ -763,17 +793,14 @@
             <!-- MammoTab Title -->
             <div class="mb-6">
               <h3 class="text-4xl md:text-5xl font-bold semtab-gradient inline-block">MammoTab</h3>
+              <span class="px-3 py-1 text-sm font-medium text-white float-right rounded-md badge-gradient">TASK: <strong>CEA</strong> (Wikidata v. 20240720)</span>
             </div>
 
             <p class="mb-4">
-              Participants will address the Semantic Table Interpretation challenges using a carefully selected subset
-              of <span class="key-phrase">870 tables</span> from the new version of the
-              <span class="key-phrase">MammoTab dataset <a href="https://unimib-datai.github.io/mammotab-docs/"
-                  target="_blank" rel="noopener noreferrer"><i
-                    class="fas fa-external-link-alt text-primary ml-1 text-sm"></i></a></span>,
-              comprising a total of <span class="key-phrase">84,907 cell</span> annotations. MammoTab is a large-scale
-              benchmark designed to provide realistic and complex scenarios, including tables affected by typical
-              challenges of web and Wikipedia data.
+              Participants will address the Semantic Table Interpretation challenges using a carefully selected subset of <span class="key-phrase">870 tables</span> from the new version of the
+              <span class="key-phrase">MammoTab dataset <a href="https://unimib-datai.github.io/mammotab-docs/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt text-primary ml-1 text-sm"></i></a></span>,
+              comprising a total of <span class="key-phrase">84,907 cell</span> annotations. MammoTab is a large-scale benchmark designed to provide realistic and complex scenarios, including tables affected by typical challenges of web and Wikipedia data.
+              The test set is not included in the dataset in order to preserve the impartiality of the final evaluation and to discourage ad-hoc solutions.
             </p>
 
             <p class="mb-4">
@@ -786,9 +813,7 @@
             </ul>
 
             <p class="mb-4">
-              The evaluation will focus on the <span class="key-phrase">Cell Entity Annotation (CEA) task</span>, but
-              will also take into account the ability of the proposed approaches to effectively deal with the following
-              key challenges:
+              The evaluation will focus on the <span class="key-phrase">Cell Entity Annotation (CEA) task</span> using the <span class="key-phrase">Wikidata KG (v. 20240720)</span> <a href="https://www.wikidata.org/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt ml-1 text-sm text-primary"></i></a>, but will also take into account the ability of the proposed approaches to effectively deal with the following key challenges:
             </p>
 
             <div class="challenge-grid">
@@ -853,16 +878,18 @@
 
             <!-- Download Button with Tooltip -->
             <div class="flex justify-center mt-8">
-              <a href="https://drive.google.com/file/d/1_mWC4UEtj0zsbuxcPs2ovihwKZoSrXMa/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-6 py-3 glass-button text-white font-medium transition-all">More actions
+              <a href="https://drive.google.com/file/d/1_mWC4UEtj0zsbuxcPs2ovihwKZoSrXMa/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="px-6 py-3 glass-button text-white font-medium transition-all">
                 Download
               </a>
             </div>
           </div>
 
           <div class="glass p-8 space-y-6">
-            <!-- MammoTab Title -->
             <div class="mb-6">
               <h3 class="text-4xl md:text-5xl font-bold semtab-gradient inline-block">secu-table</h3>
+              <span class="px-3 py-1 text-sm font-medium text-white float-right rounded-md badge-gradient ml-2">TASK: <strong>CEA</strong> (Wikidata)</span>
+              <span class="px-3 py-1 text-sm font-medium text-white float-right rounded-md badge-gradient">TASK: <strong>CEA, CTA, CPA</strong> (SEPSES)</span>
+ 
             </div>
 
             <p class="mb-4">
@@ -969,11 +996,11 @@
               <div class="p-6">
                 <div class="chair-card-header">
                   <h3 class="text-xl font-bold text-white">Ernesto Jimenez-Ruiz</h3>
-                  <p class="text-gray-400 text-sm mt-1">City, University of London, University of Oslo</p>
+                  <p class="text-gray-400 text-sm mt-1">City St George's, University of London</p>
                 </div>
-                <a href="mailto:ernesto.jimenez-ruiz@city.ac.uk" class="link flex items-center text-sm">
+                <a href="mailto:ernesto.jimenez-ruiz@citystgeorges.ac.uk" class="link flex items-center text-sm">
                   <i class="fas fa-envelope h-4 w-4 mr-2"></i>
-                  ernesto.jimenez-ruiz@city.ac.uk
+                  ernesto.jimenez-ruiz@citystgeorges.ac.uk
                 </a>
               </div>
             </div>
@@ -1026,7 +1053,7 @@
         <div
           class="glass w-full max-w-2xl mx-4 p-6 relative pointer-events-auto transform transition-all duration-500 scale-95 translate-y-4">
           <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold animate-gradient">Important Dates</h2>
+            <h2 class="text-2xl font-bold animate-gradient">Tentative Schedule</h2>
             <button id="close-modal" class="p-2 rounded-full hover:bg-gray-800 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
@@ -1035,46 +1062,63 @@
             </button>
           </div>
           <div class="space-y-4">
-            <div class="flex date-item" data-date="2025-06-02">
+            <div class="flex date-item" data-date="2025-06-09">
               <div class="indicator-dot mt-1.5"></div>
               <div>
-                <p class="font-semibold">Release datasets and instructions</p>
-                <p class="text-gray-400">June 2<sup>nd</sup></p>
+                <p class="font-semibold">Release of datasets and instructions</p>
+                <p class="text-gray-400">June 9<sup>th</sup>, 2025</p>
               </div>
+            </div>
+            <div class="flex date-item" data-date="2025-07-09">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Round 1 submission deadline</p>
+                <p class="text-gray-400">July 9<sup>th</sup>, 2025</p>
+              </div>
+            </div>
+            <div class="pl-8 pb-2">
+              <p class="text-xs text-gray-400 italic">Note: To be invited to the conference for a presentation, you must submit to Round 1.</p>
             </div>
             <div class="flex date-item" data-date="2025-07-10">
               <div class="indicator-dot mt-1.5"></div>
               <div>
-                <p class="font-semibold">Submission deadline</p>
-                <p class="text-gray-400">July 10<sup>th</sup></p>
-              </div>
-            </div>
-            <div class="flex date-item" data-date="2025-07-21">
-              <div class="indicator-dot mt-1.5"></div>
-              <div>
                 <p class="font-semibold">Evaluation</p>
-                <p class="text-gray-400">week of July 21<sup>st</sup></p>
+                <p class="text-gray-400">from July 10<sup>th</sup>, 2025</p>
               </div>
             </div>
-            <div class="flex date-item" data-date="2025-07-28">
+            <div class="flex date-item" data-date="2025-07-16">
               <div class="indicator-dot mt-1.5"></div>
               <div>
-                <p class="font-semibold">Results announced</p>
-                <p class="text-gray-400">July 28<sup>th</sup></p>
+                <p class="font-semibold">Paper submission deadline</p>
+                <p class="text-gray-400">July 16<sup>th</sup>, 2025</p>
               </div>
             </div>
-            <div class="flex date-item" data-date="2025-07-31">
+            <div class="flex date-item" data-date="2025-07-23">
               <div class="indicator-dot mt-1.5"></div>
               <div>
                 <p class="font-semibold">Invitation to present at ISWC</p>
-                <p class="text-gray-400">July 31<sup>st</sup></p>
+                <p class="text-gray-400">July 23<sup>rd</sup>, 2025</p>
+              </div>
+            </div>
+            <div class="flex date-item" data-date="2025-09-15">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Paper camera-ready submission deadline</p>
+                <p class="text-gray-400">September 15<sup>th</sup>, 2025</p>
               </div>
             </div>
             <div class="flex date-item" data-date="2025-10-20">
               <div class="indicator-dot mt-1.5"></div>
               <div>
-                <p class="font-semibold">Paper submission deadline</p>
-                <p class="text-gray-400">October 20<sup>th</sup></p>
+                <p class="font-semibold">Round 2 (Final) submission deadline</p>
+                <p class="text-gray-400">October 20<sup>th</sup>, 2025</p>
+              </div>
+            </div>
+            <div class="flex date-item" data-date="2025-11-02">
+              <div class="indicator-dot mt-1.5"></div>
+              <div>
+                <p class="font-semibold">Final results to be announced at the conference</p>
+                <p class="text-gray-400">November 2-6, 2025</p>
               </div>
             </div>
           </div>
