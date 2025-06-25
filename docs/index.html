@@ -1193,7 +1193,8 @@
 
       navItems.forEach(item => {
         item.classList.remove('active');
-        if (item.getAttribute('href').substring(1) === currentSection) {
+        const href = item.getAttribute('href');
+        if (href && href.substring(1) === currentSection) {
           item.classList.add('active');
         }
       });
