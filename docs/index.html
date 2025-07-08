@@ -1273,6 +1273,7 @@
               <h3 class="text-xl font-bold text-white">Targets Format</h3>
 
               <p>
+                <span class="key-phrase">CEA task</span><br />
                 filename, row id (0-indexed), column id (0-indexed), entity id
                 <br />
                 <br />
@@ -1356,25 +1357,97 @@
               </div>
 
               <p class="mb-4">
+                Participants will address the Semantic Table Interpretation
+                challenges using the <span class="key-phrase">Secu-table</span> dataset.
+                <br />
+
                 The secu-table dataset involved security data extracted from
                 Common Vulnerability and Exposure (CVE) and Common Weakness
-                Enumeration (CWE) data sources. The dataset is composed of
-                <span class="key-phrase">20% of tables without any errors</span>
-                and
-                <span class="key-phrase">80% of tables containing errors</span>
-                such as ambiguity, NIL, missing context, misspelt data.
-                Secu-table dataset is composed of
-                <span class="key-phrase">1,554 tables</span>, divided into
-                <span class="key-phrase">76 tables</span> provided as ground
-                truth and <span class="key-phrase">1,478 tables</span> for
-                testing.
+                Enumeration (CWE) data sources. 
+              </p>
+
+
+              <p class="mb-4">  
+                The evaluation will focus on the
+                <span class="key-phrase"
+                  >Cell Entity Annotation (CEA) task</span
+                >, the
+                <span class="key-phrase"
+                  >Column Type Annotation (CTA) task</span
+                  >, and the
+                <span class="key-phrase"
+                  >Column Property Annotation (CPA) task</span
+                  >
+                using the
+                <span class="key-phrase"
+                  >SEPSES Computer Security Knowledge Graph</span
+                >
+                <a
+                  href="https://sepses.ifs.tuwien.ac.at/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i
+                    class="fas fa-external-link-alt ml-1 text-sm text-primary"
+                  ></i
+                ></a>
+                and the
+                <span class="key-phrase">Wikidata KG</span>
+                <a
+                  href="https://www.wikidata.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ><i
+                    class="fas fa-external-link-alt ml-1 text-sm text-primary"
+                  ></i></a
+                >.
               </p>
 
               <p class="mb-4">
-                The participant are invited to use
-                <span class="key-phrase">open source LLMs</span> to address the
-                STI tasks which are: cell entity annotation (CEA), column type
-                annotation (CTA), and column property annotation (CPA) using the
+                The evaluation of the participants' results will consider the
+                Recall, Precision, and F-score. In addition to these scores, the
+                participants are invited to provide the evaluation of the LLMs
+                capabilities to make a prediction or to abstain (or to say "I
+                don't know").
+              </p>
+
+              <hr />
+
+              <h3 class="text-xl font-bold flex items-center">
+                <span
+                  style="
+                    background-image: linear-gradient(
+                      135deg,
+                      hsl(217, 91%, 60%) 0%,
+                      hsl(217, 91%, 65%) 10%,
+                      hsl(230, 91%, 65%) 20%,
+                      hsl(250, 91%, 65%) 30%,
+                      hsl(270, 91%, 65%) 40%,
+                      hsl(290, 91%, 65%) 50%,
+                      hsl(310, 91%, 65%) 60%,
+                      hsl(330, 91%, 65%) 70%,
+                      hsl(350, 91%, 65%) 80%,
+                      hsl(30, 91%, 60%) 90%,
+                      hsl(217, 91%, 60%) 100%
+                    );
+                    background-size: 400% 400%;
+                    animation: obliqueBluOrangeGradient 15s ease infinite;
+                    display: inline-block;
+                    width: 0.5rem;
+                    height: 1.5rem;
+                    border-radius: 0.25rem;
+                    margin-right: 0.5rem;
+                  "
+                ></span
+                >Round 1
+              </h3>
+
+              <p>
+                The first round involves the execution of the CEA, CTA, and CPA Tasks on a dataset composed of
+                <span class="key-phrase">1,554 tables</span>.
+              </p>
+
+              <p>
+                The evaluation will focus on the CEA, CTA, and CPA tasks using the
                 <span class="key-phrase"
                   >SEPSES Computer Security Knowledge Graph</span
                 >
@@ -1398,13 +1471,67 @@
                 >.
               </p>
 
-              <p class="mb-4">
-                The evaluation of the participants' results will consider the
-                recall, precision, and F-score. In addition to these scores, the
-                participants are invited to provide the evaluation of the LLMs
-                capabilities to make a prediction or to abstain (or to say "I
-                don't know").
+              <h3 class="text-xl font-bold text-white">Datasets' Structure</h3>
+              <p>
+                Secu-table dataset is composed of
+                <span class="key-phrase">1,554 tables</span>, divided into
+                <span class="key-phrase">76 tables</span> provided as ground
+                truth and <span class="key-phrase">1,478 tables</span> for
+                testing.
+                The dataset contains
+                <span class="key-phrase">20% of tables without any errors</span>
+                and
+                <span class="key-phrase">80% of tables containing errors</span>
+                such as ambiguity, NIL, missing context, misspelt data.
               </p>
+
+              <h3 class="text-xl font-bold text-white">Targets Format</h3>
+
+              <p>
+                <span class="key-phrase">CEA task</span><br />
+                filename, row id (0-indexed), column id (0-indexed), entity
+                <br />
+                <span class="key-phrase">CTA task</span><br />
+                filename, column id (0-indexed), entity
+                <br />
+                <span class="key-phrase">CPA task</span><br />
+                filename, col0 , column (1-indexed), property (edited) 
+              </p>
+
+              <h3 class="text-xl font-bold text-white">Evaluation Criteria</h3>
+              <p>Precision, Recall and F1 Score are calculated:</p>
+              <div>
+                $$ Precision =
+                \frac{\#correct\_annotations}{\#submitted\_annotations} $$
+              </div>
+              <div>
+                $$ Recall =
+                \frac{\#correct\_annotations}{\#ground\_truth\_annotations} $$
+              </div>
+              <div>
+                $$ F_1 = \frac{2 \times Precision \times Recall}{Precision +
+                Recall} $$
+              </div>
+              <div>
+                $$ Selective Prediction$$
+              </div>
+              <p>Notes:</p>
+              For selective prediction we want to consider the fact that the LLMs consider to say "I don't know" as seen in this picture:
+
+              <img src="imgs/image.png" alt="Selective Prediction" class="w-1/2">
+
+
+              <h3 class="text-xl font-bold text-white">Submission</h3>
+              Are you ready? Then, submit the annotations via <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeEZBh87Kav82lHxia-vEzjHnICb9aeii8-rFMMnaXrNAj-Hw/viewform?usp=header"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary"
+              >Google Form
+              <i
+                class="fas fa-external-link-alt ml-1 text-sm text-primary"
+              ></i
+            ></a>
 
               <!-- Download Button with Tooltip -->
               <div class="flex justify-center mt-8">
