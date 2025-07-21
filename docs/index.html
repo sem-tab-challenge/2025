@@ -893,6 +893,11 @@
               class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors"
               >Acknowledgements</a
             >
+            <a
+              href="#leaderboard"
+              class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors"
+              >Leaderboard</a
+            >
             <button
               id="dates-tab"
               class="nav-link py-2 md:py-0 px-4 glass-button text-white rounded-md hover:bg-opacity-40 transition-all duration-200"
@@ -1570,6 +1575,46 @@
               <p>
                 Accepted papers will be published in a CEUR-WS volume. By submitting a paper, authors agree to comply with the CEUR-WS publication guidelines.
               </p>
+            </div>
+          </section>
+
+          <!-- Leaderboard -->
+          <section id="leaderboard" class="scroll-mt-24" role="region" aria-label="Leaderboard">
+            <h2 class="text-3xl font-bold mb-6 animate-gradient">Mammotab Leaderboard</h2>
+
+            <div class="glass p-8 overflow-x-auto">
+              <div class="min-w-full">
+                <table class="w-full">
+                  <thead class="text-left border-b border-gray-700">
+                    <tr>
+                      <th class="pb-4 font-semibold">Model</th>
+                      <th class="pb-4 font-semibold text-center">Precision</th>
+                      <th class="pb-4 font-semibold text-center">Recall</th>
+                      <th class="pb-4 font-semibold text-center">F1 Score</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-700">
+                    <!-- Esempio di riga - sostituisci con i tuoi dati reali -->
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                      <td class="py-4">RAGDify</td>
+                      <td class="py-4 text-center">0.603</td>
+                      <td class="py-4 text-center">0.603</td>
+                      <td class="py-4 text-center">0.603</td>
+                    </tr>
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                      <td class="py-4">Kepler-aSI</td>
+                      <td class="py-4 text-center">0.403</td>
+                      <td class="py-4 text-center">0.157</td>
+                      <td class="py-4 text-center">0.226</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div class="mt-6 text-sm text-gray-400">
+                <p>This leaderboard shows the performance of different approaches of Mammotab Track in SemTab 2025 challenge tasks.</p>
+                <p class="mt-2">Metrics are calculated based on the official evaluation criteria.</p>
+              </div>
             </div>
           </section>
 
@@ -2316,6 +2361,32 @@
           document.body.style.overflow = ""; // Re-enable scrolling
         }
       });
+
+      // Leaderboard data
+      const leaderboardData = [
+        { name: "RAGDify", precision: "0.603", recall: "0.603", f1: "0.603" },
+        { name: "Kepler-aSI", precision: "0.403", recall: "0.157", f1: "0.226" },
+      ];
+
+      // Popola la leaderboard
+      function populateLeaderboard() {
+        const tbody = document.querySelector("#leaderboard table tbody");
+        tbody.innerHTML = ""; // Pulisci i dati esistenti
+        
+        leaderboardData.forEach(model => {
+          const row = document.createElement("tr");
+          row.className = "hover:bg-gray-800/50 transition-colors";
+          
+          row.innerHTML = `
+            <td class="py-4">${model.name}</td>
+            <td class="py-4 text-center">${model.precision}</td>
+            <td class="py-4 text-center">${model.recall}</td>
+            <td class="py-4 text-center">${model.f1}</td>
+          `;
+          
+          tbody.appendChild(row);
+        });
+      }
 
       // Aggiorna lo stato delle date anche al caricamento della pagina
       document.addEventListener("DOMContentLoaded", updateDatesStatus);
