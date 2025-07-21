@@ -2362,32 +2362,6 @@
         }
       });
 
-      // Leaderboard data
-      const leaderboardData = [
-        { name: "RAGDify", precision: "0.603", recall: "0.603", f1: "0.603" },
-        { name: "Kepler-aSI", precision: "0.403", recall: "0.157", f1: "0.226" },
-      ];
-
-      // Popola la leaderboard
-      function populateLeaderboard() {
-        const tbody = document.querySelector("#leaderboard table tbody");
-        tbody.innerHTML = ""; // Pulisci i dati esistenti
-        
-        leaderboardData.forEach(model => {
-          const row = document.createElement("tr");
-          row.className = "hover:bg-gray-800/50 transition-colors";
-          
-          row.innerHTML = `
-            <td class="py-4">${model.name}</td>
-            <td class="py-4 text-center">${model.precision}</td>
-            <td class="py-4 text-center">${model.recall}</td>
-            <td class="py-4 text-center">${model.f1}</td>
-          `;
-          
-          tbody.appendChild(row);
-        });
-      }
-
       // Aggiorna lo stato delle date anche al caricamento della pagina
       document.addEventListener("DOMContentLoaded", updateDatesStatus);
     </script>
