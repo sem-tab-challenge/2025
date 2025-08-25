@@ -884,6 +884,11 @@
               >Paper Guidelines</a
             >
             <a
+              href="#leaderboard"
+              class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors"
+              >Leaderboard</a
+            >
+            <a
               href="#co-chairs"
               class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors"
               >Co-Chairs</a
@@ -892,11 +897,6 @@
               href="#acknowledgements"
               class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors"
               >Acknowledgements</a
-            >
-            <a
-              href="#leaderboard"
-              class="nav-link py-2 md:py-0 text-gray-200 hover:text-primary transition-colors"
-              >Leaderboard</a
             >
             <button
               id="dates-tab"
@@ -1580,46 +1580,54 @@
 
           <!-- Leaderboard -->
           <section id="leaderboard" class="scroll-mt-24" role="region" aria-label="Leaderboard">
-            <h2 class="text-3xl font-bold mb-6 animate-gradient">Mammotab Leaderboard</h2>
+            <h2 class="text-3xl font-bold mb-6 animate-gradient">Leaderboard</h2>
 
             <div class="glass p-8 overflow-x-auto">
+              <!-- MammoTab Title -->
+              <div class="mb-8">
+                <h3
+                  class="text-4xl md:text-5xl font-bold semtab-gradient inline-block"
+                >
+                  MammoTab
+                </h3>
+              </div>
+              
               <div class="min-w-full">
-                <table class="w-full">
-                  <thead class="text-left border-b border-gray-700">
-                    <tr>
-                      <th class="pb-4 font-semibold">Model</th>
-                      <th class="pb-4 font-semibold text-center">Precision</th>
-                      <th class="pb-4 font-semibold text-center">Recall</th>
-                      <th class="pb-4 font-semibold text-center">F1 Score</th>
+                <table class="w-full border-collapse">
+                  <thead class="text-left">
+                    <tr class="border-b-2 border-gray-700/50">
+                      <th class="pb-6 pt-2 font-bold text-lg text-white tracking-wide">Model</th>
+                      <th class="pb-6 pt-2 font-bold text-lg text-center text-white tracking-wide">Precision</th>
+                      <th class="pb-6 pt-2 font-bold text-lg text-center text-white tracking-wide">Recall</th>
+                      <th class="pb-6 pt-2 font-bold text-lg text-center text-white tracking-wide">F1 Score</th>
                     </tr>
                   </thead>
-                  <tbody class="divide-y divide-gray-700">
-                    <!-- Esempio di riga - sostituisci con i tuoi dati reali -->
-                    <tr class="hover:bg-gray-800/50 transition-colors">
-                      <td class="py-4">RAGDify</td>
-                      <td class="py-4 text-center">0.603</td>
-                      <td class="py-4 text-center">0.603</td>
-                      <td class="py-4 text-center">0.603</td>
+                  <tbody class="divide-y divide-gray-700/30">
+                    <tr class="hover:bg-gray-800/30 transition-all duration-300">
+                      <td class="py-6 font-semibold text-white text-lg">RAGDify</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.603</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.603</td>
+                      <td class="py-6 text-center font-mono text-lg font-bold text-primary">0.603</td>
                     </tr>
-                    <tr class="hover:bg-gray-800/50 transition-colors">
-                      <td class="py-4">ditlab</td>
-                      <td class="py-4 text-center">0.549</td>
-                      <td class="py-4 text-center">0.549</td>
-                      <td class="py-4 text-center">0.549</td>
+                    <tr class="hover:bg-gray-800/30 transition-all duration-300">
+                      <td class="py-6 font-semibold text-white text-lg">ditlab</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.549</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.549</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.549</td>
                     </tr>
-                    <tr class="hover:bg-gray-800/50 transition-colors">
-                      <td class="py-4">Kepler-aSI</td>
-                      <td class="py-4 text-center">0.403</td>
-                      <td class="py-4 text-center">0.157</td>
-                      <td class="py-4 text-center">0.226</td>
+                    <tr class="hover:bg-gray-800/30 transition-all duration-300">
+                      <td class="py-6 font-semibold text-white text-lg">Kepler-aSI</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.403</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.157</td>
+                      <td class="py-6 text-center font-mono text-lg text-gray-200">0.226</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               
-              <div class="mt-6 text-sm text-gray-400">
-                <p>This leaderboard shows the performance of different approaches of Mammotab Track in SemTab 2025 challenge tasks.</p>
-                <p class="mt-2">Metrics are calculated based on the official evaluation criteria.</p>
+              <div class="mt-8 p-4 bg-gray-800/20 rounded-lg">
+                <p class="text-sm text-gray-300 mb-2">This leaderboard shows the performance of different approaches of MammoTab Track in SemTab 2025 challenge tasks.</p>
+                <p class="text-sm text-gray-300">Metrics are calculated based on the official evaluation criteria.</p>
               </div>
             </div>
           </section>
